@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <!-- 展示内容界面 -->
+    <LinearLayout
+        android:id="@+id/content_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+
+    <!-- 展示切换标签 -->
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_alignParentBottom="true"
+        >
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/rb_shoprank"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:button="@null"
+                android:drawableTop="@drawable/home_shop"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="@string/home_shop"
+                android:textColor="#838383"
+                android:textSize="15sp"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_share"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:button="@null"
+                android:drawableTop="@drawable/home_share"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="@string/home_share"
+                android:textColor="#838383"
+                android:textSize="15sp"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_gift"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:button="@null"
+                android:drawableTop="@drawable/home_gift"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="@string/home_gift"
+                android:textColor="#a0a0a0"
+                android:textSize="15sp"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_order"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:button="@null"
+                android:drawableTop="@drawable/home_order"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="@string/home_order"
+                android:textColor="#9f9f80"
+                android:textSize="15sp"
+                />
+
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+</RelativeLayout>

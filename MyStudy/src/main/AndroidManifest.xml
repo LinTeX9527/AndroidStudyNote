@@ -215,6 +215,19 @@
         </activity>
 
 
+        <activity
+            android:name="com.lintex9527.study.FragmentTestActivity"
+            android:label="@string/test_fragment"
+            android:launchMode="singleInstance"
+            >
+            <intent-filter >
+                <action android:name="com.lintex9527.study.FragmentTestActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+
     </application>
 
 </manifest>

@@ -37,7 +37,16 @@
     <string name="audioPlay">播放录音</string>
     <string name="audioFinish">停止播放</string>
     <string name="recWarnning">检查是否开启录音、存储权限</string>
-    
+
+
+    <!-- imooc 老师 summer321 讲解 Fragment 使用 -->
+    <!-- FragmentTestActivity -->
+    <string name="home_shop">热销排行</string>
+    <string name="home_share">手机专享</string>
+    <string name="home_gift">我的礼品</string>
+    <string name="home_order">我的订单</string>
+
+
     <!-- 各个活动的描述性语句 -->
     <string name="test_autocomplete">测试AutoCompleteTextView</string>
     <string name="test_image">测试ImageView</string>
@@ -51,6 +60,7 @@
     <string name="test_menu">测试菜单ContextMenu</string>
     <string name="test_audiorecorder">测试录音机</string>
     <string name="test_mediarecord">官方例程MediaRecord</string>
+    <string name="test_fragment">Fragment 动态切换</string>
 
 
 </resources>
