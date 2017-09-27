@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+
+    <Space 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        />
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/photo_desc"
+        android:textSize="24sp"
+        android:gravity="center_horizontal"
+        />
+    
+    <Space 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        />
+    <Gallery 
+        android:id="@+id/gallery01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    
+    <ImageSwitcher 
+        android:id="@+id/imageswitcher01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        >
+        
+        
+    </ImageSwitcher>
+    
+</LinearLayout>

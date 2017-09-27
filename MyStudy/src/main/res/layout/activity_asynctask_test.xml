@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    
+    <Button 
+        android:id="@+id/btnGetWebPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/getwebpage"
+        />
+    
+    <!-- 显示下载进度 -->
+    <ProgressBar 
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:max="100"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        />
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" 
+        >
+        
+        <TextView 
+            android:id="@+id/tvShowWebPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            />
+    </ScrollView>
+
+</LinearLayout>

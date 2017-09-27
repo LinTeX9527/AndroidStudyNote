@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/test_menu"
+        android:textSize="24sp"
+        android:gravity="center_horizontal"
+        />
+    
+    <!-- 用下面的按钮控制这个TextView的属性 -->
+    <Button 
+        android:id="@+id/btnText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnText"
+        android:textSize="20sp"
+        />
+    
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnText"
+        android:textSize="24sp"
+        android:gravity="center_horizontal"
+        />
+    
+
+    
+    <!-- 用下面的按钮控制下面的ImageSwitcher -->
+    <Button 
+        android:id="@+id/btnImageSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnImageSwitch"
+        android:textSize="20sp"
+        />
+    <ImageSwitcher 
+        android:id="@+id/imageslide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></ImageSwitcher>
+
+</LinearLayout>

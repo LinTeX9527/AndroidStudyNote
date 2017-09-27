@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.lintex9527.study"
+          android:versionCode="1"
+          android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+
+        <!-- 所有的测试项列在这个页面 -->
+        <activity
+            android:name="com.lintex9527.study.TestPageActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 测试自动补全控件 AutoCompleteTextView，它是 EditText 的子类 -->
+        <activity
+            android:name="com.lintex9527.study.AutoCompleteTextViewTestActivity"
+            android:label="@string/test_autocomplete"
+            android:launchMode="singleInstance"
+            >
+            <intent-filter>
+                <action android:name="net.learn2develop.myuitest.AutoCompleteTextViewTestActivity" />
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+
+        <!-- 测试ImageView控件的使用 -->
+        <activity
+            android:name="com.lintex9527.study.ImageTestActivity"
+            android:label="@string/test_image"
+            android:launchMode="singleInstance"
+            >
+
+            <intent-filter >
+                <action android:name="net.learn2develop.myuitest.ImageTestActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+
+
+        <!-- 测试ListView基本用法 -->
+        <activity
+            android:name="com.lintex9527.study.ListViewTestActivity"
+            android:label="@string/test_listview"
+            android:launchMode="singleInstance"
+            >
+
+            <intent-filter >
+                <action android:name="net.learn2develop.myuitest.ListViewTestActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+
+        <!-- 测试 SimpleAdapter -->
+        <activity
+            android:name="com.lintex9527.study.SimpleAdapterTestActivity"
+            android:label="@string/test_simpleadapter"
+            android:launchMode="singleInstance"
+            >
+
+            <intent-filter >
+                <action android:name="net.learn2develop.myuitest.SimpleAdapterTestActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+
+        <!-- Gallery 测试 -->
+        <activity
+            android:name="com.lintex9527.study.GalleryTestActivity"
+            android:label="@string/test_gallery"
+            android:launchMode="singleInstance"
+            >
+
+            <intent-filter >
+                <action android:name="net.learn2develop.myuitest.GalleryTestActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+
+        <!-- 测试ImageSwitcher -->
+        <activity
+            android:name="com.lintex9527.study.ImageSwitcherTestActivity"
+            android:label="@string/test_imageswitcher"
+            android:launchMode="singleInstance"
+            >
+
+            <intent-filter >
+                <action android:name="net.learn2develop.myuitest.ImageSwitcherTestActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+
+        <!-- 测试 GridView -->
+        <activity
+            android:name="com.lintex9527.study.GridViewTestActivity"
+            android:label="@string/test_gridview"
+            android:launchMode="singleInstance"
+            >
+
+            <intent-filter >
+                <action android:name="net.learn2develop.myuitest.GridViewTestActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+
+
+        <!-- 测试菜单  -->
+        <activity
+            android:name="com.lintex9527.study.MenuTestActivity"
+            android:label="@string/test_menu"
+            android:launchMode="singleInstance"
+            android:windowSoftInputMode="stateAlwaysVisible"
+            >
+
+            <intent-filter >
+                <action android:name="net.learn2develop.myuitest.MenuTestActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+
+
+
+        <!-- 测试异步工作 AsyncTask -->
+        <activity
+            android:name="com.lintex9527.study.AsyncTaskTestActivity"
+            android:label="@string/test_asynctask"
+            android:launchMode="singleInstance"
+            >
+
+            <intent-filter >
+                <action android:name="com.lintex9527.network.AsyncTaskTestActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+
+
+        <!-- 测试Volley加载图片 -->
+        <activity
+            android:name="com.lintex9527.study.VolleyTestActivity"
+            android:label="@string/test_volley"
+            android:launchMode="singleInstance"
+            >
+
+            <intent-filter >
+                <action android:name="com.lintex9527.network.VolleyTestActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+
+
+        <!-- 测试录音机 -->
+        <activity
+            android:name="com.lintex9527.study.MyRecorderTestActivity"
+            android:label="@string/test_audiorecorder"
+            android:launchMode="singleInstance"
+            >
+            <intent-filter >
+                <action android:name="com.lintex9527.recorderplayer.MyRecorderTestActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <!-- 官方例程 -->
+        <activity
+            android:name="com.lintex9527.study.AudioRecordTestActivity"
+            android:label="@string/test_audiorecorder"
+            android:launchMode="singleInstance"
+            >
+            <intent-filter >
+                <action android:name="com.lintex9527.recorderplayer.AudioRecordTestActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+
+    </application>
+
+</manifest>
