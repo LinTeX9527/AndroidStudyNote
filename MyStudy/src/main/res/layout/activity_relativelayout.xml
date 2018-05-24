@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    tools:context="com.lintex9527.uistuff.RelativeLayoutActivity">
+
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/reminder_name"
+        />
+
+    <Spinner
+        android:id="@+id/spinnerDates"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editName"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/spinnerTimes"
+        />
+
+    <!--参见SDK docs 中的教程，可以在一个地方先申请一个resource ID，然后才赋值给某个view-->
+    <Spinner
+        android:id="@id/spinnerTimes"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editName"
+        android:layout_alignParentRight="true"
+        />
+
+    <Button
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerTimes"
+        android:layout_alignParentRight="true"
+        android:text="@string/done"
+        />
+
+</RelativeLayout>

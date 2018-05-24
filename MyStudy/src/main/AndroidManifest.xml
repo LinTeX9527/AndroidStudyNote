@@ -228,6 +228,18 @@
         </activity>
 
 
+        <!--测试相对布局-->
+        <activity
+            android:name="com.lintex9527.uistuff.RelativeLayoutActivity"
+            android:label="@string/test_relativelayout"
+            android:launchMode="singleInstance"
+            >
+            <intent-filter>
+                <action android:name="com.lintex9527.uistuff.RelativeLayoutActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

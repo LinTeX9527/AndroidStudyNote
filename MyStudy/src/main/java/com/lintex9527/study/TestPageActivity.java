@@ -79,7 +79,8 @@ public class TestPageActivity extends Activity {
 		addTestItem(R.string.test_mediarecord, "com.lintex9527.recorderplayer.AudioRecordTestActivity");
 
 		addTestItem(R.string.test_fragment, "com.lintex9527.study.FragmentTestActivity");
-		
+
+		addTestItem(R.string.test_relativelayout, "com.lintex9527.uistuff.RelativeLayoutActivity");
 	}
 	
 	protected void addTestItem(int idDescription, String action){

@@ -7,17 +7,17 @@
     <string name="action_find">查找</string>
     <string name="action_back">退后</string>
     <string name="action_new">新建</string>
-    
+
     <string name="close_and_exit">退出应用</string>
     <string name="empty_description">空的描述，等待添加</string>
     <string name="desc_simpleadapter">SimpleAdapter 比 ArrayAdapter更加灵活，定制性更强，需要重点掌握</string>
 
     <!-- TestPageActivity 中使用的文本资源 -->
     <string name="all_test_home">测试菜单</string>
-    
+
     <!-- AsyncTaskTestActivity 中使用的文本资源  -->
     <string name="getwebpage">访问网页</string>
-    
+
     <!-- MenuTestActivity 中使用的文本资源  -->
     <string name="btnImageSwitch">切换图片</string>
     <string name="btnText">切换文字</string>
@@ -27,10 +27,10 @@
     <string name="picLast">上一张图片</string>
     <string name="picNext">下一张个图片</string>
     <string name="picRandom">随机一张图片</string>
-    
+
     <!-- GalleryTestActivity 中使用的文本资源 -->
     <string name="photo_desc">妹子图</string>
-    
+
     <!--  MyRecorderTestActivity 中使用的文本资源  -->
     <string name="recStart">开始录音</string>
     <string name="recStop">停止录音</string>
@@ -46,6 +46,9 @@
     <string name="home_gift">我的礼品</string>
     <string name="home_order">我的订单</string>
 
+    <!--RelaviteLayoutActivity-->
+    <string name="reminder_name">Reminder name</string>
+    <string name="done">Done</string>
 
     <!-- 各个活动的描述性语句 -->
     <string name="test_autocomplete">测试AutoCompleteTextView</string>
@@ -61,6 +64,7 @@
     <string name="test_audiorecorder">测试录音机</string>
     <string name="test_mediarecord">官方例程MediaRecord</string>
     <string name="test_fragment">Fragment 动态切换</string>
+    <string name="test_relativelayout">相对布局</string>
 
 
 </resources>
