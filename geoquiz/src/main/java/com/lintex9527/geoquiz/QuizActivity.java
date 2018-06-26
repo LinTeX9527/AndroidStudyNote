@@ -44,6 +44,15 @@ public class QuizActivity extends AppCompatActivity {
         // 显示第一个问题
         updateQuestion();
 
+        // 单击问题直接显示下一题
+        mQuestionTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                updateQuestion();
+            }
+        });
+
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
