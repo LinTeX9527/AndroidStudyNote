@@ -41,7 +41,7 @@
             android:id="@+id/last_button"
             android:layout_width="90dp"
             android:layout_height="50dp"
-            android:layout_gravity="bottom|left"
+            android:layout_gravity="bottom|start"
             android:src="@drawable/arrow_left"
             android:contentDescription="@string/last_button"
             />
@@ -50,7 +50,7 @@
             android:id="@+id/next_button"
             android:layout_width="90dp"
             android:layout_height="50dp"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="bottom|end"
             android:src="@drawable/arrow_right"
             android:contentDescription="@string/next_button"
             />
