@@ -39,22 +39,20 @@
         >
 
 
-        <Button
+        <ImageButton
             android:id="@+id/last_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/last_button"
-            android:drawableLeft="@drawable/arrow_left"
-            android:drawablePadding="4dp"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:src="@drawable/arrow_left"
+            android:contentDescription="@string/last_button"
             />
 
-        <Button
+        <ImageButton
             android:id="@+id/next_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/next_button"
-            android:drawableRight="@drawable/arrow_right"
-            android:drawablePadding="4dp"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:src="@drawable/arrow_right"
+            android:contentDescription="@string/next_button"
             />
 
     </LinearLayout>
