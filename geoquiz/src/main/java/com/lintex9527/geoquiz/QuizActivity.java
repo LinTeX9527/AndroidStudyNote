@@ -1,5 +1,6 @@
 package com.lintex9527.geoquiz;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +35,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mFalseButton;
     private ImageButton mLastButton; // 上一题
     private ImageButton mNextButton; // 下一题
+    private Button mCheatButton;    // 显示作弊选项的按钮
     private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[] {
@@ -102,6 +104,16 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
+            }
+        });
+
+        mCheatButton = (Button) findViewById(R.id.cheat_button);
+        mCheatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start CheatActivity
+                Intent intent = new Intent(getApplicationContext(), CheatActivity.class);
+                startActivity(intent);
             }
         });
     }
