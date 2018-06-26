@@ -1,1 +1,1 @@
-include ':MyStudy'
+include ':MyStudy', ':geoquiz'
