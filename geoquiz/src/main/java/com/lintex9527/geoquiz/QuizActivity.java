@@ -15,11 +15,20 @@ import android.widget.Toast;
  *
  * 应用等待某个特定事件的发生，也可以说是正在“监听”特定事件。为响应某个事件而创建的对象叫做监听器（listener）
  * 监听器是实现特定监听器接口的对象，用来监听某类时间的发生。
+ *
+ * 修改日志：
+ * 实现方法onSaveInstanceState()，可保存和恢复基本数据类型、可实现Serializable或者Parcelable接口的对象。
+ * 在 Bundle中保存定制类对象不是一个好主意。因为你取回的对象可能已经过时了。比较好的做法是通过其他方式保存定制类对象，
+ * 而在 Bundle 中保存对象对应的基本数据类型的标识符。
  */
 
 public class QuizActivity extends AppCompatActivity {
 
     private static final String TAG = QuizActivity.class.getName();
+
+    // 新增一个常量作为将要存储在 bundle 中的键值对的键
+    // 然后覆盖方法 onSaveInstanceState() 方法，将 mCurrentIndex变量值保存到bundle中
+    private static final String KEY_INDEX = "index";
 
     private Button mTrueButton;
     private Button mFalseButton;
@@ -46,6 +55,11 @@ public class QuizActivity extends AppCompatActivity {
         mFalseButton = (Button) findViewById(R.id.false_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
+
+        // 检查并获取保存的值
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
         // 显示第一个问题
         updateQuestion();
 
@@ -90,6 +104,15 @@ public class QuizActivity extends AppCompatActivity {
                 updateQuestion();
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "onSaveInstanceState()");
+
+        // 将mCurrentIndex变量值保存到 bundle 中
+        savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
     }
 
     /**
