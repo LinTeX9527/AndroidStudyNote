@@ -19,7 +19,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private Button mTrueButton;
     private Button mFalseButton;
-    private Button mNextButton;
+    private Button mLastButton; // 上一题
+    private Button mNextButton; // 下一题
     private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[] {
@@ -54,6 +55,16 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
+            }
+        });
+
+        mLastButton = (Button) findViewById(R.id.last_button);
+        mLastButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 这里 mQuestionBank.length - 1 是因为数组下标的上限就是数组长度减1
+                mCurrentIndex = (mCurrentIndex == 0) ? (mQuestionBank.length-1) : (mCurrentIndex - 1);
+                updateQuestion();
             }
         });
 
