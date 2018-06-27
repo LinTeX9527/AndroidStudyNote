@@ -2,6 +2,7 @@ package com.lintex9527.geoquiz;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,6 +38,7 @@ public class CheatActivity extends AppCompatActivity {
 
     private TextView mAnswerTextView;
     private Button mShowAnswer;
+    private TextView mAPILevelTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,17 @@ public class CheatActivity extends AppCompatActivity {
                 setAnswerShowResult(true);
             }
         });
+
+
+        // 系统相关的信息参见文档 android.os.Build
+        mAPILevelTextView = (TextView) findViewById(R.id.api_level_text_view);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("系统版本：");
+        stringBuilder.append(android.os.Build.VERSION.RELEASE);
+        stringBuilder.append("\nAPI级别：");
+        stringBuilder.append(Build.VERSION.SDK_INT);
+        mAPILevelTextView.setText(stringBuilder.toString());
+
     }
 
     /**
