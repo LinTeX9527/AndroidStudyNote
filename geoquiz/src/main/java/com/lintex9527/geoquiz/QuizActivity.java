@@ -31,6 +31,10 @@ public class QuizActivity extends AppCompatActivity {
     // 新增一个常量作为将要存储在 bundle 中的键值对的键
     // 然后覆盖方法 onSaveInstanceState() 方法，将 mCurrentIndex变量值保存到bundle中
     private static final String KEY_INDEX = "index";
+
+    // 键，关联用户在这一题上是否作弊
+    private static final String KEY_IS_CHEATER = "com.lintex9527.quizactivity.ischeater";
+
     private static final int REQUEST_CODE_CHEAT = 0;
 
     private Button mTrueButton;
@@ -64,8 +68,10 @@ public class QuizActivity extends AppCompatActivity {
         // 检查并获取保存的值
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            mIsCheater = savedInstanceState.getBoolean(KEY_IS_CHEATER, false);
         }
-        // 显示第一个问题
+
+        Log.i(TAG, "onCreate(): mCurrentIndex = " + mCurrentIndex + ", mIsCheater = " + mIsCheater);
         updateQuestion();
 
         // 单击问题直接显示下一题
@@ -73,6 +79,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                mIsCheater = false; // 每次更新问题时，都需要更新这个值
                 updateQuestion();
             }
         });
@@ -91,21 +98,25 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        // 上一题
         mLastButton = (ImageButton) findViewById(R.id.last_button);
         mLastButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 这里 mQuestionBank.length - 1 是因为数组下标的上限就是数组长度减1
                 mCurrentIndex = (mCurrentIndex == 0) ? (mQuestionBank.length-1) : (mCurrentIndex - 1);
+                mIsCheater = false; // 每次更新问题时，都需要更新这个值
                 updateQuestion();
             }
         });
 
+        // 下一题
         mNextButton = (ImageButton) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                mIsCheater = false; // 每次更新问题时，都需要更新这个值
                 updateQuestion();
             }
         });
@@ -123,6 +134,12 @@ public class QuizActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * 解析从其他Activity返回来的标志
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -136,15 +153,22 @@ public class QuizActivity extends AppCompatActivity {
             }
             mIsCheater = CheatActivity.wasAnswerShown(data);
         }
+        Log.d(TAG, "onActivityResult(): mIsCheater = " + mIsCheater);
     }
 
+    /**
+     * device configuration 发生改变时，保存某些标志
+     * @param savedInstanceState
+     */
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        Log.i(TAG, "onSaveInstanceState()");
+        Log.i(TAG, "onSaveInstanceState(): mCurrentIndex = " + mCurrentIndex + ", mIsCheater = " + mIsCheater);
 
         // 将mCurrentIndex变量值保存到 bundle 中
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+
+        savedInstanceState.putBoolean(KEY_IS_CHEATER, mIsCheater);
     }
 
     /**
@@ -153,7 +177,6 @@ public class QuizActivity extends AppCompatActivity {
     private void updateQuestion() {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
-        mIsCheater = false; // 每次更新问题时，都需要更新这个值
     }
 
 
