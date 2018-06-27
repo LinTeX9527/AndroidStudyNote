@@ -11,6 +11,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 参见教程：
  * 《Android编程权威指南 第2版》
@@ -35,6 +38,9 @@ public class QuizActivity extends AppCompatActivity {
     // 键，关联用户在这一题上是否作弊
     private static final String KEY_IS_CHEATER = "com.lintex9527.quizactivity.ischeater";
 
+    // 键，关联用户在所有答案上的作弊标记
+    private static final String KEY_ANSWER_CHEAT_FLAG = "com.lintex9527.quizactivity.answercheatflag";
+
     private static final int REQUEST_CODE_CHEAT = 0;
 
     private Button mTrueButton;
@@ -51,6 +57,9 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_americas, true),
             new Question(R.string.question_asia, true),
     };
+    // 用一个列表记录每一个问题是否有作弊行为
+    private List<Boolean> mAnswerCheatFlag;
+
     private int mCurrentIndex = 0;
     private boolean mIsCheater;
 
@@ -64,11 +73,26 @@ public class QuizActivity extends AppCompatActivity {
         mFalseButton = (Button) findViewById(R.id.false_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
+        // 初始化作弊标记
+        if (mAnswerCheatFlag == null) {
+            mAnswerCheatFlag = new ArrayList<>();
+            for (int index = 0; index < mQuestionBank.length; index++) {
+                Log.d(TAG, "onCreate():  mAnswerCheatFlag size = " + mAnswerCheatFlag.size());
+                Log.d(TAG, "onCreate(): index = " + index);
+                mAnswerCheatFlag.add(index, false);
+            }
+        }
 
         // 检查并获取保存的值
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
             mIsCheater = savedInstanceState.getBoolean(KEY_IS_CHEATER, false);
+
+            // 重新获取答案作弊列表
+            boolean[] myarray = savedInstanceState.getBooleanArray(KEY_ANSWER_CHEAT_FLAG);
+            for (int i = 0; i < mAnswerCheatFlag.size()-1; i++) {
+                mAnswerCheatFlag.set(i, myarray[i]);
+            }
         }
 
         Log.i(TAG, "onCreate(): mCurrentIndex = " + mCurrentIndex + ", mIsCheater = " + mIsCheater);
@@ -152,6 +176,7 @@ public class QuizActivity extends AppCompatActivity {
                 return;
             }
             mIsCheater = CheatActivity.wasAnswerShown(data);
+            mAnswerCheatFlag.set(mCurrentIndex, mIsCheater);
         }
         Log.d(TAG, "onActivityResult(): mIsCheater = " + mIsCheater);
     }
@@ -169,6 +194,13 @@ public class QuizActivity extends AppCompatActivity {
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
 
         savedInstanceState.putBoolean(KEY_IS_CHEATER, mIsCheater);
+
+        // 保存答案作弊列表
+        boolean[] myarray = new boolean[mAnswerCheatFlag.size()];
+        for (int i = 0; i < mAnswerCheatFlag.size()-1; i++) {
+            myarray[i] = mAnswerCheatFlag.get(i);
+        }
+        savedInstanceState.putBooleanArray(KEY_ANSWER_CHEAT_FLAG, myarray);
     }
 
     /**
@@ -188,6 +220,10 @@ public class QuizActivity extends AppCompatActivity {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
 
         int messageResId = 0;
+
+        Log.d(TAG, "checkAnswer(): mCurrentIndex = " + mCurrentIndex);
+        // 从答案作弊列列表中检查用户曾经是否作弊
+        mIsCheater = mAnswerCheatFlag.get(mCurrentIndex);
 
         if (mIsCheater) {
             messageResId = R.string.judgment_toast;
