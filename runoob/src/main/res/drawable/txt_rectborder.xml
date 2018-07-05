@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--描边，指定宽度和颜色-->
+    <stroke
+        android:width="2px"
+        android:color="#000000"
+        />
+
+    <!--渐变色的设定-->
+    <gradient
+        android:angle="270"
+        android:startColor="#FCD209"
+        android:endColor="#C0C0C0"
+        />
+
+    <!--4个方向的内边距-->
+    <padding
+        android:left="5dp"
+        android:top="5dp"
+        android:right="5dp"
+        android:bottom="5dp"
+        />
+
+</shape>

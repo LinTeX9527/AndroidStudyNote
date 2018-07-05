@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">RUNOOB Android</string>
+    <string name="runoob_case_set">RUNOOB案例集合</string>
+
+
+    <!--测试案例的描述性语句-->
+    <!--针对TestTextViewActivity-->
+    <string name="textview_attr">TextView基本属性</string>
+
+
+
+</resources>
