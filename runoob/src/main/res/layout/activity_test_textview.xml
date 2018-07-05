@@ -29,4 +29,19 @@
         android:text="圆角边框的TextView"
         />
 
+    <!--注意XML中不能设置 drawableLeft 等的图像大小，需要在Java代码中设置-->
+    <TextView
+        android:id="@+id/txtThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="四周有图片的TextView"
+        android:drawableLeft="@drawable/meizitu5467_01"
+        android:drawableTop="@drawable/meizitu5467_02"
+        android:drawableRight="@drawable/meizitu5467_03"
+        android:drawableBottom="@drawable/meizitu5467_04"
+        />
+
 </LinearLayout>

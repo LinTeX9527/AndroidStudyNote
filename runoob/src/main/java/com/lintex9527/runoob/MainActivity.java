@@ -1,6 +1,8 @@
 package com.lintex9527.runoob;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -42,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
         ListView lvAllItem = (ListView) findViewById(R.id.lv_alltest);
         lvAllItem.setAdapter(new SimpleAdapter(this, data, R.layout.testpage_list_item, from, to));
+        // 给ListView 添加分割线
+        lvAllItem.setDivider(new ColorDrawable(Color.GRAY));
+        lvAllItem.setDividerHeight(2);
+
         lvAllItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
