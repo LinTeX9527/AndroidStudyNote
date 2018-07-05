@@ -1,9 +1,11 @@
 package com.lintex9527.runoob_framelayout;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 
@@ -37,5 +39,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         frameLayout.addView(meizi);
+
+        Button btnNextPage = (Button) findViewById(R.id.btn_nextPage);
+        btnNextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), XiaojiejieActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
