@@ -1,19 +1,30 @@
 package com.lintex9527.runoob;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.lintex9527.androidtools.EditTextWithDel;
+
+/**
+ *
+ *
+ * 参见教程：
+ * http://www.runoob.com/w3cnote/android-tutorial-edittext.html
+ *
+ */
 public class TestEditTextActivity extends Activity {
 
     private static final String TAG = TestEditTextActivity.class.getName();
 
     private EditText editUsername;
 
-    private EditText editPassword;
+    private EditTextWithDel editPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,19 +45,23 @@ public class TestEditTextActivity extends Activity {
         editUsername = (EditText) findViewById(R.id.edit_username);
         {
             Drawable[] drawables = editUsername.getCompoundDrawables();
-            drawables[0].setBounds(0, 0, 80, 80);
-            editUsername.setCompoundDrawables(drawables[0], null, null, null);
+            if (drawables.length > 0) {
+                drawables[0].setBounds(0, 0, 80, 80);
+                editUsername.setCompoundDrawables(drawables[0], null, null, null);
+            }
             Log.d(TAG, "editUsername inputtype --> " + editUsername.getInputType());
             Log.d(TAG, "InputType.TYPE_TEXT_VARIATION_PERSON_NAME --> " + InputType.TYPE_TEXT_VARIATION_PERSON_NAME); // 0x60
         }
 
 
         // 输入框：密码
-        editPassword = (EditText) findViewById(R.id.edit_password);
+        editPassword = (EditTextWithDel) findViewById(R.id.edit_password);
         {
             Drawable[] drawables = editPassword.getCompoundDrawables();
-            drawables[0].setBounds(0, 0, 80, 80);
-            editPassword.setCompoundDrawables(drawables[0], null, null, null);
+            if (drawables.length > 0) {
+                drawables[0].setBounds(0, 0, 80, 80);
+                editPassword.setCompoundDrawables(drawables[0], null, null, null);
+            }
             Log.d(TAG, "editPassword inputtype --> " + editPassword.getInputType());
             Log.d(TAG, "InputType.TYPE_TEXT_VARIATION_PASSWORD --> " + InputType.TYPE_TEXT_VARIATION_PASSWORD); // 0x80
         }
