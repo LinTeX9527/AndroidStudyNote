@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestEditTextActivity"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
+            android:text="@string/welcome_back"
+            android:textSize="16sp"
+            android:background="@color/colorAccent"
+            />
+
+        <EditText
+            android:id="@+id/edit_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvWelcome"
+            android:hint="@string/enter_username"
+            android:drawableLeft="@drawable/person"
+            android:inputType="textPersonName"
+            />
+
+        <EditText
+            android:id="@+id/edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_password"
+            android:layout_below="@id/edit_username"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/lock"
+            android:inputType="textPassword"
+            />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_password"
+            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
+            android:text="@string/login"
+            android:textColor="@color/colorPrimaryDark"
+            />
+
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

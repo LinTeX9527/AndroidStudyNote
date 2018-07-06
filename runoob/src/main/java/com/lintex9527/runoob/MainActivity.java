@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         index = 0;
 
         addTestItem(R.string.textview_attr, "com.lintex9527.runoob.TestTextViewActivity");
+        addTestItem(R.string.edittext_attr, "com.lintex9527.runoob.TestEditTextActivity");
 
     }
 

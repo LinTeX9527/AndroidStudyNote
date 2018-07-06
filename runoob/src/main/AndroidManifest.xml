@@ -10,11 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
         <!-- 所有的测试项列在这个页面 -->
-        <activity android:name=".MainActivity"
-            android:launchMode="singleInstance"
-            >
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,23 +21,29 @@
             </intent-filter>
         </activity>
 
-
         <!-- 测试自动补全控件 AutoCompleteTextView，它是 EditText 的子类 -->
         <activity
-            android:name="com.lintex9527.runoob.TestTextViewActivity"
+            android:name=".TestTextViewActivity"
             android:label="@string/textview_attr"
-            android:launchMode="singleInstance"
-            >
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="com.lintex9527.runoob.TestTextViewActivity" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
+        <activity android:name=".TestEditTextActivity"
+            android:label="@string/edittext_attr"
+            android:launchMode="singleInstance"
+            >
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestEditTextActivity" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
 
-
+        </activity>
     </application>
 
 </manifest>
