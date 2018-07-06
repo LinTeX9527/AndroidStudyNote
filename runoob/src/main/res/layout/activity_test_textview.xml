@@ -8,6 +8,17 @@
     android:orientation="vertical"
     tools:context=".TestTextViewActivity">
 
+    <!--使能autoLink属性，单击文字可以跳转到默认的APP-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:text="webmaster@163.com"
+        android:textSize="16sp"
+        android:autoLink="all"
+        />
+
     <TextView
         android:id="@+id/txtOne"
         android:layout_width="200dp"
