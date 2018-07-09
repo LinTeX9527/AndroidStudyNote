@@ -52,4 +52,47 @@
         android:textSize="20sp"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="选择你喜欢的水果"
+            />
+
+        <CheckBox
+            android:id="@+id/chk_banana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="香蕉"
+            />
+
+        <CheckBox
+            android:id="@+id/chk_apple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="苹果"
+            />
+
+        <CheckBox
+            android:id="@+id/chk_pineapple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="菠萝"
+            />
+
+        <Button
+            android:id="@+id/btnCommit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="确定"
+            />
+    </LinearLayout>
+
 </LinearLayout>

@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -20,6 +22,10 @@ public class TestRadioButtonActivity extends AppCompatActivity {
     private RadioButton mRadioButtonMan;
     private RadioButton mRadioButtonWoman;
     private Button mButtonPost;
+
+    CheckBox cb01;
+    CheckBox cb02;
+    CheckBox cb03;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,5 +61,48 @@ public class TestRadioButtonActivity extends AppCompatActivity {
             }
         });
 
+
+        // 下面是复选框 CheckBox 的案例
+        cb01 = (CheckBox) findViewById(R.id.chk_apple);
+        cb02 = (CheckBox) findViewById(R.id.chk_banana);
+        cb03 = (CheckBox) findViewById(R.id.chk_pineapple);
+
+        cb01.setOnCheckedChangeListener(fruit_chk_listener);
+        cb02.setOnCheckedChangeListener(fruit_chk_listener);
+        cb03.setOnCheckedChangeListener(fruit_chk_listener);
+
+
+        Button btnCommit = (Button) findViewById(R.id.btnCommit);
+        btnCommit.setOnClickListener(new View.OnClickListener() {
+            /**
+             * 单击按钮之后，来遍历每一个复选框，得到最终的选择值
+             * @param v
+             */
+            @Override
+            public void onClick(View v) {
+                StringBuilder stringBuilder = new StringBuilder();
+                if (cb01.isChecked()) stringBuilder.append(cb01.getText().toString() + " ");
+                if (cb02.isChecked()) stringBuilder.append(cb02.getText().toString() + " ");
+                if (cb03.isChecked()) stringBuilder.append(cb03.getText().toString() + " ");
+                Toast.makeText(getApplicationContext(), stringBuilder.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
+
+    /**
+     * 复选框单击的监听器
+     */
+    CompoundButton.OnCheckedChangeListener fruit_chk_listener = new CompoundButton.OnCheckedChangeListener() {
+        /**
+         * 这里的buttonView代表此刻被单击选中的复选框
+         * @param buttonView
+         * @param isChecked
+         */
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (buttonView.isChecked()) {
+                Toast.makeText(getApplicationContext(), buttonView.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 }
