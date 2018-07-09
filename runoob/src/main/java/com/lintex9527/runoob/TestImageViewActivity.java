@@ -17,7 +17,7 @@ import android.os.Bundle;
  * 方法 adjustViewBounds() 设置缩放是否保存原图长宽比
  * 必须和 maxHeight, maxWidth 一起使用
  * 案例参见 activity_imageview2.xml
- * 
+ *
  */
 public class TestImageViewActivity extends AppCompatActivity {
 
