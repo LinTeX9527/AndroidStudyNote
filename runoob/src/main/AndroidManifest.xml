@@ -32,18 +32,29 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".TestEditTextActivity"
+        <activity
+            android:name=".TestEditTextActivity"
             android:label="@string/edittext_attr"
-            android:launchMode="singleInstance"
-            >
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="com.lintex9527.runoob.TestEditTextActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TestButtonActivity"
+            android:label="@string/button_attr"
+            android:launchMode="singleInstance"
+            >
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestButtonActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
 
         </activity>
+
     </application>
 
 </manifest>
