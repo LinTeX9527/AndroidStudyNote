@@ -49,10 +49,12 @@ public class EditTextWithDel extends EditText implements View.OnFocusChangeListe
 
     public EditTextWithDel(Context context) {
         super(context, null);
+        init(); // 原来是缺少了2个init() 调用，导致不能正常响应焦点事件/晃动动画。
     }
 
     public EditTextWithDel(Context context, AttributeSet attrs) {
         super(context, attrs, android.R.attr.editTextStyle);
+        init();
     }
 
     public EditTextWithDel(Context context, AttributeSet attrs, int defStyleAttr) {

@@ -22,6 +22,8 @@ public class TestEditTextActivity extends Activity {
 
     private static final String TAG = TestEditTextActivity.class.getName();
 
+    private Toast mToast;
+
     private EditTextWithDel editUsername;
 
     private EditTextWithDel editPassword;
@@ -43,6 +45,9 @@ public class TestEditTextActivity extends Activity {
      * textPassword 数值为 0x81
      */
     private void initGUI() {
+
+        mToast = Toast.makeText(TestEditTextActivity.this, "", Toast.LENGTH_SHORT);
+
         // 输入框：用户名
         editUsername = (EditTextWithDel) findViewById(R.id.edit_username);
         {
@@ -75,13 +80,13 @@ public class TestEditTextActivity extends Activity {
 
                 Log.d(TAG, "username --> " + editUsername.getText() + ", password --> " + editPassword.getText());
 
-                if (editUsername.getText().equals("")) {
+                if (editUsername.getText().equals("") || editUsername.getText().length() < 1) {
                     editUsername.setShakeAnimation();
                     showToast("用户名不能为空");
                     return;
                 }
 
-                if (editPassword.getText().equals("")) {
+                if (editPassword.getText().equals("") || editPassword.getText().length() < 1) {
                     editPassword.setShakeAnimation();
                     showToast("密码不能为空");
                     return;
@@ -91,6 +96,7 @@ public class TestEditTextActivity extends Activity {
     }
 
     private void showToast(String msg) {
-        Toast.makeText(TestEditTextActivity.this, msg, Toast.LENGTH_SHORT).show();
+        mToast.setText(msg);
+        mToast.show();
     }
 }
