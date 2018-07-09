@@ -12,6 +12,7 @@
         android:id="@+id/btnOne"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_danger_rounded"
         android:text="按钮一"
         />
 
@@ -20,7 +21,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_background"
+        android:background="@drawable/button_danger_rounded"
         android:text="按钮二"
         />
 

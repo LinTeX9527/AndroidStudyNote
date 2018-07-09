@@ -5,4 +5,11 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorYellow">#F0F803</color>
     <color name="colorGray">#998800</color>
+
+    <color name="button_danger_pressed">#ffd2322d</color>
+    <color name="button_danger_edge">#ffd43f3a</color>
+    <color name="button_danger_disabled">#a5d9534f</color>
+    <color name="button_danger_disabled_edge">#a5d43f3a</color>
+    <color name="button_danger">#ffd9534f</color>
+    <color name="text_font_white">#ffffff</color>
 </resources>

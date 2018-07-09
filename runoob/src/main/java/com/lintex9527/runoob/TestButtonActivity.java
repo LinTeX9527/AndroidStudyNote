@@ -14,6 +14,9 @@ import android.widget.Button;
  * 然后再给某一个按钮的背景图设置为刚才的XML文件
  *
  * 按这篇博文为什么没有效果呢？
+ *
+ * 一个复杂的Button按钮状态，状态定义见文件 button_danger_rounded.xml ，其中应用了 color, dimens
+ * 
  */
 public class TestButtonActivity extends AppCompatActivity {
 
