@@ -17,5 +17,6 @@
     <string name="button_attr">Button状态</string>
 
     <string name="imageview_attr">ImageView基本属性</string>
+    <string name="radiobuton_attr">RadioButton基本用法</string>
 
 </resources>

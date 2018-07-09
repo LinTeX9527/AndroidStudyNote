@@ -52,19 +52,27 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".TestImageViewActivity"
+        <activity
+            android:name=".TestImageViewActivity"
             android:label="@string/imageview_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestImageViewActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".TestRadioButtonActivity"
+            android:label="@string/radiobuton_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestImageViewActivity" />
+                <action android:name="com.lintex9527.runoob.TestRadioButtonActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
         </activity>
-
-
     </application>
 
 </manifest>
