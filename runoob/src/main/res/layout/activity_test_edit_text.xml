@@ -26,13 +26,16 @@
             android:background="@color/colorAccent"
             />
 
-        <EditText
+        <com.lintex9527.androidtools.EditTextWithDel
             android:id="@+id/edit_username"
+            android:layout_marginTop="60dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvWelcome"
             android:hint="@string/enter_username"
-            android:drawableStart="@drawable/person"
+            android:singleLine="true"
+            android:drawableLeft="@drawable/person"
+            android:drawableRight="@drawable/xx"
             android:inputType="textPersonName"
             />
 
@@ -43,7 +46,8 @@
             android:hint="@string/enter_password"
             android:layout_below="@id/edit_username"
             android:layout_marginTop="10dp"
-            android:drawableStart="@drawable/lock"
+            android:drawableLeft="@drawable/lock"
+            android:drawableRight="@drawable/xx"
             android:inputType="textPassword"
             />
 

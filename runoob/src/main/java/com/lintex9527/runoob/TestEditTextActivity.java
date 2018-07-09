@@ -1,13 +1,13 @@
 package com.lintex9527.runoob;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.lintex9527.androidtools.EditTextWithDel;
 
@@ -22,9 +22,11 @@ public class TestEditTextActivity extends Activity {
 
     private static final String TAG = TestEditTextActivity.class.getName();
 
-    private EditText editUsername;
+    private EditTextWithDel editUsername;
 
     private EditTextWithDel editPassword;
+
+    private Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +44,12 @@ public class TestEditTextActivity extends Activity {
      */
     private void initGUI() {
         // 输入框：用户名
-        editUsername = (EditText) findViewById(R.id.edit_username);
+        editUsername = (EditTextWithDel) findViewById(R.id.edit_username);
         {
             Drawable[] drawables = editUsername.getCompoundDrawables();
             if (drawables.length > 0) {
                 drawables[0].setBounds(0, 0, 80, 80);
-                editUsername.setCompoundDrawables(drawables[0], null, null, null);
+                editUsername.setCompoundDrawables(drawables[0], drawables[1], drawables[2], drawables[3]);
             }
             Log.d(TAG, "editUsername inputtype --> " + editUsername.getInputType());
             Log.d(TAG, "InputType.TYPE_TEXT_VARIATION_PERSON_NAME --> " + InputType.TYPE_TEXT_VARIATION_PERSON_NAME); // 0x60
@@ -60,10 +62,35 @@ public class TestEditTextActivity extends Activity {
             Drawable[] drawables = editPassword.getCompoundDrawables();
             if (drawables.length > 0) {
                 drawables[0].setBounds(0, 0, 80, 80);
-                editPassword.setCompoundDrawables(drawables[0], null, null, null);
+                editPassword.setCompoundDrawables(drawables[0], drawables[1], drawables[2], drawables[3]);
             }
             Log.d(TAG, "editPassword inputtype --> " + editPassword.getInputType());
             Log.d(TAG, "InputType.TYPE_TEXT_VARIATION_PASSWORD --> " + InputType.TYPE_TEXT_VARIATION_PASSWORD); // 0x80
         }
+
+        btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(TAG, "username --> " + editUsername.getText() + ", password --> " + editPassword.getText());
+
+                if (editUsername.getText().equals("")) {
+                    editUsername.setShakeAnimation();
+                    showToast("用户名不能为空");
+                    return;
+                }
+
+                if (editPassword.getText().equals("")) {
+                    editPassword.setShakeAnimation();
+                    showToast("密码不能为空");
+                    return;
+                }
+            }
+        });
+    }
+
+    private void showToast(String msg) {
+        Toast.makeText(TestEditTextActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 }
