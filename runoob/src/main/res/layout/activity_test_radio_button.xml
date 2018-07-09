@@ -33,10 +33,12 @@
             android:layout_margin="20dp"
             />
 
+        <!--设置 paddingLeft 属性可以修改文字和单选框的距离-->
         <RadioButton
             android:id="@+id/btnWoman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
             android:text="女"
             android:layout_margin="20dp"
             />
@@ -80,10 +82,12 @@
             android:text="苹果"
             />
 
+        <!--使用 paddingLeft 可以修改文字和选择框的距离-->
         <CheckBox
             android:id="@+id/chk_pineapple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
             android:text="菠萝"
             />
 
