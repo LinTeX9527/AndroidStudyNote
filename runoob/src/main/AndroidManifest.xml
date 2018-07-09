@@ -42,18 +42,28 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".TestButtonActivity"
             android:label="@string/button_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestButtonActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".TestImageViewActivity"
+            android:label="@string/imageview_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestButtonActivity" />
+                <action android:name="com.lintex9527.runoob.TestImageViewActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
         </activity>
+
 
     </application>
 

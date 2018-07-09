@@ -16,4 +16,6 @@
 
     <string name="button_attr">Button状态</string>
 
+    <string name="imageview_attr">ImageView基本属性</string>
+
 </resources>
