@@ -29,5 +29,6 @@
     <string name="seekbar_attr">SeekBar基础</string>
     <string name="ratingbar_attr">RatingBar基础</string>
     <string name="scrollview_attr">ScrollView基础</string>
+    <string name="datetime_attr">时钟日期基础</string>
 
 </resources>

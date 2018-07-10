@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         addTestItem(R.string.seekbar_attr, "com.lintex9527.runoob.TestSeekBarActivity");
         addTestItem(R.string.ratingbar_attr, "com.lintex9527.runoob.TestRatingBarActivity");
         addTestItem(R.string.scrollview_attr, "com.lintex9527.runoob.TestScrollViewActivity");
+        addTestItem(R.string.datetime_attr, "com.lintex9527.runoob.TestTextClockActivity");
+
 
     }
 
