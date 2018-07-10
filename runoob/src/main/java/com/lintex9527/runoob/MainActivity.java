@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         addTestItem(R.string.button_attr, "com.lintex9527.runoob.TestButtonActivity");
         addTestItem(R.string.imageview_attr, "com.lintex9527.runoob.TestImageViewActivity");
         addTestItem(R.string.radiobuton_attr, "com.lintex9527.runoob.TestRadioButtonActivity");
+        addTestItem(R.string.togglebutton_attr, "com.lintex9527.runoob.TestToggleButtonActivity");
 
     }
 

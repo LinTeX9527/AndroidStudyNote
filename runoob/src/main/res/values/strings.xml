@@ -18,5 +18,6 @@
 
     <string name="imageview_attr">ImageView基本属性</string>
     <string name="radiobuton_attr">RadioButton基本用法</string>
+    <string name="togglebutton_attr">ToggleButton基础</string>
 
 </resources>

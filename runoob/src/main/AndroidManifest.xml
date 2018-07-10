@@ -62,14 +62,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".TestRadioButtonActivity"
+        <activity
+            android:name=".TestRadioButtonActivity"
             android:label="@string/radiobuton_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestRadioButtonActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".TestToggleButtonActivity"
+            android:label="@string/togglebutton_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestRadioButtonActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.lintex9527.runoob.TestToggleButtonActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
         </activity>

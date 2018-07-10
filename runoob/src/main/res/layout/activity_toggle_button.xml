@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TestToggleButtonActivity">
+
+    <ToggleButton
+        android:id="@+id/togglebtn_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:checked="true"
+        android:textOff="关闭声音"
+        android:textOn="打开声音"
+        />
+
+    <Switch
+        android:id="@+id/switch_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textOff="开启"
+        android:textOn="关闭"
+        android:thumb="@drawable/thumb_selector"
+        android:track="@drawable/track_selector"
+        />
+
+</LinearLayout>
