@@ -72,17 +72,31 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".TestToggleButtonActivity"
+        <activity
+            android:name=".TestToggleButtonActivity"
             android:label="@string/togglebutton_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestToggleButtonActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".TestProgressBarActivity"
+            android:label="@string/progressbar_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestToggleButtonActivity"/>
+                <action android:name="com.lintex9527.runoob.TestProgressBarActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
         </activity>
+
+
     </application>
 
 </manifest>

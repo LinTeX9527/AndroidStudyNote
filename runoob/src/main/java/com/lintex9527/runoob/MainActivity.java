@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         addTestItem(R.string.imageview_attr, "com.lintex9527.runoob.TestImageViewActivity");
         addTestItem(R.string.radiobuton_attr, "com.lintex9527.runoob.TestRadioButtonActivity");
         addTestItem(R.string.togglebutton_attr, "com.lintex9527.runoob.TestToggleButtonActivity");
+        addTestItem(R.string.progressbar_attr, "com.lintex9527.runoob.TestProgressBarActivity");
 
     }
 
