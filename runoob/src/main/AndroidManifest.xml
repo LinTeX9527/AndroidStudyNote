@@ -132,18 +132,28 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".TestDateTimeActivity"
-            android:launchMode="singleInstance"
-            >
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="com.lintex9527.runoob.TestDateTimeActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
+
+
+        <activity
+            android:name=".TestTimePickerActivity"
+            android:launchMode="singleInstance"
+            >
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestTimePickerActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
 
 
     </application>

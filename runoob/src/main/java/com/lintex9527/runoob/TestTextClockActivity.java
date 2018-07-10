@@ -48,10 +48,17 @@ public class TestTextClockActivity extends AppCompatActivity {
 
 
 
-        findViewById(R.id.btnDateTime).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnDatePicker).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent("com.lintex9527.runoob.TestDateTimeActivity"));
+            }
+        });
+
+        findViewById(R.id.btnTimePicker).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent("com.lintex9527.runoob.TestTimePickerActivity"));
             }
         });
 
