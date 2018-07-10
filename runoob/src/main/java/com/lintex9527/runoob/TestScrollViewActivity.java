@@ -10,7 +10,7 @@ import android.widget.TextView;
 /**
  * ScrollView 基础用法
  * http://www.runoob.com/w3cnote/android-tutorial-scrollview.html
- * 
+ *
  */
 public class TestScrollViewActivity extends AppCompatActivity {
 
