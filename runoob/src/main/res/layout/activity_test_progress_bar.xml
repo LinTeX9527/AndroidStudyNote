@@ -68,4 +68,19 @@
         android:layout_gravity="center_horizontal"
         />
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="自定义圆形进度条二"
+        android:gravity="center_horizontal"
+        />
+
+    <com.lintex9527.androidtools.CircleProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        />
+
 </LinearLayout>
