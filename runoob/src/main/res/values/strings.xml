@@ -28,5 +28,6 @@
     <string name="circle_control">自定义圆形进度条控制</string>
     <string name="seekbar_attr">SeekBar基础</string>
     <string name="ratingbar_attr">RatingBar基础</string>
+    <string name="scrollview_attr">ScrollView基础</string>
 
 </resources>
