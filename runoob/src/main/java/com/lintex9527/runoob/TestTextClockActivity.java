@@ -1,5 +1,6 @@
 package com.lintex9527.runoob;
 
+import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,6 +45,16 @@ public class TestTextClockActivity extends AppCompatActivity {
         btnStop.setOnClickListener(myButtonClickListener);
         btnReset.setOnClickListener(myButtonClickListener);
         btnFormat.setOnClickListener(myButtonClickListener);
+
+
+
+        findViewById(R.id.btnDateTime).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent("com.lintex9527.runoob.TestDateTimeActivity"));
+            }
+        });
+
     }
 
 

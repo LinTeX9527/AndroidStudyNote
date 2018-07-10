@@ -122,19 +122,30 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".TestTextClockActivity"
             android:label="@string/datetime_attr"
-            android:launchMode="singleInstance"
-            >
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="com.lintex9527.runoob.TestTextClockActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".TestDateTimeActivity"
+            android:launchMode="singleInstance"
+            >
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestDateTimeActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
+
     </application>
 
 </manifest>
