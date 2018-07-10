@@ -82,7 +82,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".TestProgressBarActivity"
             android:label="@string/progressbar_attr"
@@ -93,15 +92,25 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".TestSeekBarActivity"
             android:label="@string/seekbar_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestSeekBarActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".TestRatingBarActivity"
+            android:label="@string/ratingbar_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestSeekBarActivity"/>
+                <action android:name="com.lintex9527.runoob.TestRatingBarActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 

@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         addTestItem(R.string.togglebutton_attr, "com.lintex9527.runoob.TestToggleButtonActivity");
         addTestItem(R.string.progressbar_attr, "com.lintex9527.runoob.TestProgressBarActivity");
         addTestItem(R.string.seekbar_attr, "com.lintex9527.runoob.TestSeekBarActivity");
+        addTestItem(R.string.ratingbar_attr, "com.lintex9527.runoob.TestRatingBarActivity");
 
     }
 
