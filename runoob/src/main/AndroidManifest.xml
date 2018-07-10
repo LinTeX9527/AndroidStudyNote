@@ -83,20 +83,29 @@
             </intent-filter>
         </activity>
 
-
         <activity
             android:name=".TestProgressBarActivity"
             android:label="@string/progressbar_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestProgressBarActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".TestSeekBarActivity"
+            android:label="@string/seekbar_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestProgressBarActivity"/>
+                <action android:name="com.lintex9527.runoob.TestSeekBarActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
         </activity>
-
-
     </application>
 
 </manifest>
