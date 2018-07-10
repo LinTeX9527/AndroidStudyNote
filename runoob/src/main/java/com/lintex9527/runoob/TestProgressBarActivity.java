@@ -3,7 +3,11 @@ package com.lintex9527.runoob;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.ToggleButton;
 
 /**
  * 教程：
@@ -19,6 +23,7 @@ public class TestProgressBarActivity extends AppCompatActivity {
 
     private ImageView iv_progressbar;
     private AnimationDrawable ad;
+    private ToggleButton toggleProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +32,38 @@ public class TestProgressBarActivity extends AppCompatActivity {
 
         iv_progressbar = (ImageView) findViewById(R.id.iv_progressbar);
         ad = (AnimationDrawable) iv_progressbar.getDrawable();
-        iv_progressbar.postDelayed(new Runnable() {
+
+        // 一开始的进度条设置--不可见，等待按钮事件
+        iv_progressbar.setVisibility(ProgressBar.INVISIBLE);
+
+
+        toggleProgress = (ToggleButton) findViewById(R.id.btnStopProgress);
+        toggleProgress.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void run() {
-                ad.start();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!isChecked) { // 停止
+                    iv_progressbar.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (ad.isRunning()) {
+                                ad.stop();
+                                iv_progressbar.setVisibility(ProgressBar.INVISIBLE);
+                            }
+                        }
+                    }, 100);
+                } else { // 启动进度条
+                    iv_progressbar.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            iv_progressbar.setVisibility(ProgressBar.VISIBLE);
+                            if(!ad.isRunning()) {
+                                ad.start();
+                            }
+                        }
+                    }, 100);
+                }
             }
-        }, 100);
+        });
+
     }
 }

@@ -20,5 +20,8 @@
     <string name="radiobuton_attr">RadioButton基本用法</string>
     <string name="togglebutton_attr">ToggleButton基础</string>
     <string name="progressbar_attr">ProgressBar基础</string>
+    <string name="progressbar_control">控制进度条</string>
+    <string name="progressbar_stop">停止进度条</string>
+    <string name="progressbar_start">启动进度条</string>
 
 </resources>
