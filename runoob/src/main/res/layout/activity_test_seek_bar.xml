@@ -13,6 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:progress="30"
+        android:minHeight="5.0dp"
+        android:maxHeight="6.0dp"
+        android:progressDrawable="@drawable/seekbar_bar"
+        android:thumb="@drawable/seekbar_thumb"
         />
 
     <TextView

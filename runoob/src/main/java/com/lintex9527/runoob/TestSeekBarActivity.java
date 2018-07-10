@@ -10,6 +10,18 @@ import android.widget.TextView;
  * http://www.runoob.com/w3cnote/android-tutorial-seekbar.html
  *
  *
+ * SeekBar 简单定制
+ * 第一步：滑块状态Drawable
+ * 这里新建文件 seekbar_thumb.xml ，里面指定滑块按下和不按下的两个图标
+ *
+ * 第二步：条形栏Bar的Drawable
+ * 这里新建文件 seekbar_bar.xml，里面指定android资源 background, secondaryProgress, progress 的形态
+ *
+ * 第三步：在布局文件中指定某一个SeekBar 使用前两部定义的资源
+ *
+ * android:progressDrawable="@drawable/seekbar_bar"
+ * android:thumb="@drawable/seekbar_thumb"
+ *
  */
 public class TestSeekBarActivity extends AppCompatActivity {
 
