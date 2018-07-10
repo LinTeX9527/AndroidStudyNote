@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ToggleButton;
 
+import com.lintex9527.androidtools.CircleProgressBar;
+
 /**
  * 教程：
  * http://www.runoob.com/w3cnote/android-tutorial-progressbar.html
@@ -25,6 +27,8 @@ public class TestProgressBarActivity extends AppCompatActivity {
     private AnimationDrawable ad;
     private ToggleButton toggleProgress;
 
+    private CircleProgressBar mCircleProgressBar;
+    private ToggleButton mToggleButton_CirclePgbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +65,21 @@ public class TestProgressBarActivity extends AppCompatActivity {
                             }
                         }
                     }, 100);
+                }
+            }
+        });
+
+        mCircleProgressBar = (CircleProgressBar) findViewById(R.id.circir_pgbar);
+        mToggleButton_CirclePgbar = (ToggleButton) findViewById(R.id.tgbtn_circlepgbar);
+        mToggleButton_CirclePgbar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) { //进度开始刷新
+                    mCircleProgressBar.addTargetProgressByStep(10);
+                    mCircleProgressBar.invalidate();
+                    mCircleProgressBar.setVisibility(View.VISIBLE);
+                } else {
+                    mCircleProgressBar.setVisibility(View.INVISIBLE);
                 }
             }
         });

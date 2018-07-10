@@ -77,10 +77,32 @@
         android:gravity="center_horizontal"
         />
 
-    <com.lintex9527.androidtools.CircleProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        >
+
+        <com.lintex9527.androidtools.CircleProgressBar
+            android:id="@+id/circir_pgbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <ToggleButton
+            android:id="@+id/tgbtn_circlepgbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:text="@string/circle_control"
+            android:textOff="@string/circle_stop"
+            android:textOn="@string/circle_start"
+            />
+
+    </LinearLayout>
+
 
 </LinearLayout>

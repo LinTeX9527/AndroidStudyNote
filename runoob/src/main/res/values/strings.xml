@@ -23,5 +23,8 @@
     <string name="progressbar_control">控制进度条</string>
     <string name="progressbar_stop">停止进度条</string>
     <string name="progressbar_start">启动进度条</string>
+    <string name="circle_start">进度开始</string>
+    <string name="circle_stop">进度暂停</string>
+    <string name="circle_control">自定义圆形进度条控制</string>
 
 </resources>

@@ -20,12 +20,13 @@ public class CircleProgressBar extends View {
     private Paint mTextPaint;
     private float mStrokeWidth = 50;
     private float mHalfStrokeWidth = mStrokeWidth / 2;
+    // 半径大小
     private float mRadius = 150;
     private RectF mRect;
     private int mProgress = 0;
-    // 目标值，想改多少就改多少
-    private int mTargetProgress = 100;
-    private int mMax = 100;
+    // 目标值，想改多少就改多少，即最后是否达到100%
+    private int mTargetProgress = 10;
+    private int mMaxProgress = 100;
     private int mWidth;
     private int mHeight;
 
@@ -44,6 +45,28 @@ public class CircleProgressBar extends View {
         init();
     }
 
+    /**
+     * 直接设定目标进度
+     * @param targetProgress
+     */
+    public void setTargetProgress(int targetProgress) {
+        mTargetProgress = targetProgress;
+        if (mTargetProgress > mMaxProgress) {
+            mTargetProgress = mMaxProgress;
+        }
+    }
+
+
+    /**
+     * 按步进增加目标进度
+     * @param step
+     */
+    public void addTargetProgressByStep(int step) {
+        mTargetProgress += step;
+        if (mTargetProgress > mMaxProgress) {
+            mTargetProgress = mMaxProgress;
+        }
+    }
 
     /**
      * 相关参数初始化
@@ -88,7 +111,7 @@ public class CircleProgressBar extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         initRect();
-        float angle = mProgress / (float) mMax * 360;
+        float angle = mProgress / (float) mMaxProgress * 360;
         canvas.drawCircle(mWidth / 2, mHeight / 2, mRadius, mBackPaint);
         canvas.drawArc(mRect, -90, angle, false, mFrontPaint);
         canvas.drawText(mProgress + "%", mWidth / 2 + mHalfStrokeWidth, mHeight / 2 + mHalfStrokeWidth, mTextPaint);
