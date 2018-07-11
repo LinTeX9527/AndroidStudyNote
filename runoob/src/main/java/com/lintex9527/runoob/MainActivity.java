@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         addTestItem(R.string.scrollview_attr, "com.lintex9527.runoob.TestScrollViewActivity");
         addTestItem(R.string.datetime_attr, "com.lintex9527.runoob.TestTextClockActivity");
         addTestItem(R.string.arrayadapter_attr, "com.lintex9527.runoob.TestArrayAdapterActivity");
-
+        addTestItem(R.string.simpleadapter_attr, "com.lintex9527.runoob.TestSimpleAdapterActivity");
     }
 
     protected void addTestItem(int idDescription, String action){

@@ -150,15 +150,25 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".TestArrayAdapterActivity"
             android:label="@string/arrayadapter_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestArrayAdapterActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".TestSimpleAdapterActivity"
+            android:label="@string/simpleadapter_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestArrayAdapterActivity"/>
+                <action android:name="com.lintex9527.runoob.TestSimpleAdapterActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 

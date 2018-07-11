@@ -31,5 +31,6 @@
     <string name="scrollview_attr">ScrollView基础</string>
     <string name="datetime_attr">时钟日期基础</string>
     <string name="arrayadapter_attr">ArrayAdapter基础</string>
+    <string name="simpleadapter_attr">SimpleAdapter基础</string>
 
 </resources>
