@@ -3,7 +3,12 @@ package com.lintex9527.runoob;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.lintex9527.controller.AnimalAdapter;
 import com.lintex9527.model.Animal;
@@ -22,6 +27,8 @@ import java.util.List;
  * 4、为ListView 设置 AnimalAdapter 类实例。
  */
 public class TestBaseAdapterActivity extends AppCompatActivity {
+
+    private static final String TAG = TestBaseAdapterActivity.class.getName();
 
     private List<Animal> mData = null;
     private Context mContext;
@@ -48,6 +55,41 @@ public class TestBaseAdapterActivity extends AppCompatActivity {
         mData.add(new Animal("马", "白龙马", R.drawable.horse));
 
         mAdapter = new AnimalAdapter((LinkedList<Animal>) mData, mContext);
+
+        // 动态加载顶部View
+        final LayoutInflater inflater = LayoutInflater.from(this);
+        View headerView = inflater.inflate(R.layout.animal_list_header, null, false);
+        // 动态加载顶部View 必须在 setAdapter 之前，否则出现问题。
+        mListViewAnimal.addHeaderView(headerView);
         mListViewAnimal.setAdapter(mAdapter);
+
+        mListViewAnimal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /**
+             * 添加了表头，这里的点击事件在表头上也能响应，所以这里的view, position, id 有可能表示表头信息
+             * 总结如下：
+             *         position      id
+             * 表头       0           -1
+             * item1      1           0
+             * item2      2           1
+             * item3      3           2
+             *
+             * @param parent
+             * @param view
+             * @param position
+             * @param id
+             */
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d(TAG, "[AdapterView id] = " + Long.toHexString(parent.getId()));
+                Log.d(TAG, "[AdapterView class] = " + parent.getClass().getName());
+                Log.d(TAG, "view id = " + Long.toHexString(view.getId()) + ",position = " + position + ", id = " + id);
+                Log.d(TAG, view.getClass().toString());
+
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("点击了第" + position + "项,id=" + id);
+                Toast.makeText(mContext, stringBuilder.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
