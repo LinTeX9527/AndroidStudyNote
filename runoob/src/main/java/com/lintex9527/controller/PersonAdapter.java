@@ -1,6 +1,7 @@
 package com.lintex9527.controller;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,13 @@ import java.util.LinkedList;
 
 /**
  * 适配器处在Controller这一层，关联View 和 Model，所以成员变量包括两个部分。
+ *
+ * Adapter 中修改数据，然后必须调用 notifyDataSetChanged() 来通知 ListView 更新视图。
+ * 例如这里的方法 addPerson(), deletePerson(), clearPerson()
  */
 public class PersonAdapter extends BaseAdapter {
+
+    private static final String TAG = PersonAdapter.class.getName();
 
     // 表示数据集合
     private LinkedList<Person> mData;
@@ -24,16 +30,19 @@ public class PersonAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+        Log.d(TAG, "getCount() = " + mData.size());
         return mData.size();
     }
 
     @Override
     public Object getItem(int position) {
+        Log.d(TAG, "getItem(), position = " + position);
         return mData.get(position);
     }
 
     @Override
     public long getItemId(int position) {
+        Log.d(TAG, "getItemId(), item Id = " + position);
         return position;
     }
 
@@ -92,6 +101,29 @@ public class PersonAdapter extends BaseAdapter {
         }
         mData.add(person);
         notifyDataSetChanged();
+    }
+
+    /**
+     * TODO: 通过序号删除一个Person
+     * @param
+     */
+    public void deletePerson(int position){
+        if (mData != null){
+            mData.remove(position);
+        }
+        notifyDataSetChanged();
+    }
+
+
+    /**
+     * 清空所有数据
+     */
+    public void clearPerson() {
+        Log.d(TAG, "clearPerson() in");
+        if (mData != null) {
+            mData.clear();
+            notifyDataSetChanged();
+        }
     }
 
     static class ViewHolder {

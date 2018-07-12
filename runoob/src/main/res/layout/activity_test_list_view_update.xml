@@ -7,16 +7,49 @@
     android:orientation="vertical"
     tools:context=".TestListViewUpdateActivity">
 
-    <Button
-        android:id="@+id/btnAddPerson"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="添加一位名人"
-        android:textSize="24sp"
-        android:textColor="#FF6655FF"
-        android:background="#661A7F99"
-        android:layout_margin="5dp"
-        />
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        >
+
+        <Button
+            android:id="@+id/btnAddPerson"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="添加一个"
+            android:textSize="20sp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            />
+
+        <Button
+            android:id="@+id/btnDelPerson"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="删除第一个"
+            android:textSize="20sp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            />
+
+
+        <Button
+            android:id="@+id/btnClearPerson"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="清除所有"
+            android:textSize="20sp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            />
+
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/listviewPersons"
