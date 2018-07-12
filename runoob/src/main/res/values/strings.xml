@@ -33,5 +33,6 @@
     <string name="arrayadapter_attr">ArrayAdapter基础</string>
     <string name="simpleadapter_attr">SimpleAdapter基础</string>
     <string name="baseadapter_attr">BaseAdapter基础</string>
+    <string name="listviewupdate_attr">ListView数据更新问题</string>
 
 </resources>

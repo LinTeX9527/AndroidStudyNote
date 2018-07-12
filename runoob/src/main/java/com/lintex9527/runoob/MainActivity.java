@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         addTestItem(R.string.arrayadapter_attr, "com.lintex9527.runoob.TestArrayAdapterActivity");
         addTestItem(R.string.simpleadapter_attr, "com.lintex9527.runoob.TestSimpleAdapterActivity");
         addTestItem(R.string.baseadapter_attr, "com.lintex9527.runoob.TestBaseAdapterActivity");
+        addTestItem(R.string.listviewupdate_attr, "com.lintex9527.runoob.TestListViewUpdateActivity");
     }
 
     protected void addTestItem(int idDescription, String action){

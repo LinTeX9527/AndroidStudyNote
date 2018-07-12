@@ -170,17 +170,31 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".TestBaseAdapterActivity"
-            android:label="@string/baseadapter_attr"
+            android:label="@string/baseadapter_attr">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestBaseAdapterActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".TestListViewUpdateActivity"
+            android:label="@string/listviewupdate_attr"
+            android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestBaseAdapterActivity"/>
+                <action android:name="com.lintex9527.runoob.TestListViewUpdateActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
         </activity>
+
+
+
     </application>
 
 </manifest>
