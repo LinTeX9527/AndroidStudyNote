@@ -3,7 +3,11 @@ package com.lintex9527.runoob;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lintex9527.controller.MyCustomAdapter;
 import com.lintex9527.model.App;
@@ -18,10 +22,12 @@ import java.util.List;
  */
 public class TestCustomAdapterActivity extends AppCompatActivity {
 
+    // UI 相关的成员
     private Context mContext;
     private ListView mListView_book;
     private ListView mListView_app;
 
+    // 数据相关的成员
     private MyCustomAdapter<App> myAdapterApp = null;
     private MyCustomAdapter<Book> myAdapterBook = null;
     private List<App> mDataApp = null;
@@ -35,6 +41,10 @@ public class TestCustomAdapterActivity extends AppCompatActivity {
         init();
     }
 
+
+    /**
+     * 初始化控件，绑定数据，设置ListView的适配器
+     */
     private void init(){
         mListView_book = (ListView) findViewById(R.id.listview_book);
         mListView_app = (ListView) findViewById(R.id.listview_app);
@@ -52,6 +62,11 @@ public class TestCustomAdapterActivity extends AppCompatActivity {
 
         // Adapter 初始化
         myAdapterApp = new MyCustomAdapter<App>((ArrayList<App>) mDataApp, R.layout.item_app) {
+            /**
+             * MyCustomAdapter 本是一个抽象类，这里实例化则必须要实现方法 bindView()
+             * @param holder
+             * @param obj
+             */
             @Override
             public void bindView(ViewHolder holder, App obj) {
                 holder.setImageResource(R.id.img_icon, obj.getIcon());
@@ -71,5 +86,12 @@ public class TestCustomAdapterActivity extends AppCompatActivity {
         // 分别为ListView设置adapter
         mListView_book.setAdapter(myAdapterBook);
         mListView_app.setAdapter(myAdapterApp);
+        mListView_app.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView tv = (TextView) view.findViewById(R.id.txt_name);
+                Toast.makeText(getBaseContext(), "APP 名字是" + tv.getText(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
