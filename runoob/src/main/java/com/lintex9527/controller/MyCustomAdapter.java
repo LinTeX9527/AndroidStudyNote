@@ -63,6 +63,13 @@ public abstract class MyCustomAdapter<T> extends BaseAdapter {
         return holder.getItemView();
     }
 
+    /**
+     * 定义一个抽象方法，完成 ViewHolder 与 Data 数据集的绑定
+     * 需要在新建的BaseAdapter 的时候实现这个方法就好。
+     * 因为这个方法为 abstract ，所以 MyCustomAdapter 也必须定义为 abstract 类。
+     * @param holder
+     * @param obj
+     */
     public abstract void bindView(ViewHolder holder, T obj);
 
     /**
@@ -192,6 +199,13 @@ public abstract class MyCustomAdapter<T> extends BaseAdapter {
             return holder;
         }
 
+
+        /**
+         * 根据 id 获取集合中保存的控件
+         * @param id
+         * @param <T>
+         * @return
+         */
         @SuppressWarnings("unchecked")
         public <T extends View> T getView(int id) {
             T t = (T) mViews.get(id);
