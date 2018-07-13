@@ -200,15 +200,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".TestMultiLayoutAdapterActivity"
             android:label="@string/multilayoutadapter_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestMultiLayoutAdapterActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TestGridViewActivity"
+            android:label="@string/gridview_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestMultiLayoutAdapterActivity"/>
+                <action android:name="com.lintex9527.runoob.TestGridViewActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 

@@ -36,6 +36,7 @@
     <string name="listviewupdate_attr">ListView数据更新问题</string>
     <string name="customadapter_attr">自定义Adapter抽象优化</string>
     <string name="multilayoutadapter_attr">子项多布局的Adapter</string>
+    <string name="gridview_attr">GridView基础</string>
 
     <!--ListView Item 多布局中用来区分不同的子项-->
     <item name="TAG_APP" type="id"></item>
