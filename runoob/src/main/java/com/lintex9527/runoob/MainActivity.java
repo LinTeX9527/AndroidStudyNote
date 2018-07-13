@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         addTestItem(R.string.baseadapter_attr, "com.lintex9527.runoob.TestBaseAdapterActivity");
         addTestItem(R.string.listviewupdate_attr, "com.lintex9527.runoob.TestListViewUpdateActivity");
         addTestItem(R.string.customadapter_attr, "com.lintex9527.runoob.TestCustomAdapterActivity");
+        addTestItem(R.string.multilayoutadapter_attr, "com.lintex9527.runoob.TestMultiLayoutAdapterActivity");
     }
 
     protected void addTestItem(int idDescription, String action){
