@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         addTestItem(R.string.customadapter_attr, "com.lintex9527.runoob.TestCustomAdapterActivity");
         addTestItem(R.string.multilayoutadapter_attr, "com.lintex9527.runoob.TestMultiLayoutAdapterActivity");
         addTestItem(R.string.gridview_attr, "com.lintex9527.runoob.TestGridViewActivity");
+        addTestItem(R.string.spinner_attr, "com.lintex9527.runoob.TestSpinnerActivity");
+
     }
 
     protected void addTestItem(int idDescription, String action){

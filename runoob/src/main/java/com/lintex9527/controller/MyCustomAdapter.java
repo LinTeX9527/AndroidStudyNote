@@ -26,8 +26,11 @@ public abstract class MyCustomAdapter<T> extends BaseAdapter {
     private int mLayoutRes;
 
 
-    public MyCustomAdapter() {
-    }
+    /**
+     * 不需要这个空参数的构造函数，免得初始化用错了方法
+     */
+//    public MyCustomAdapter() {
+//    }
 
     public MyCustomAdapter(ArrayList<T> mData, int mLayoutRes) {
         this.mData = mData;

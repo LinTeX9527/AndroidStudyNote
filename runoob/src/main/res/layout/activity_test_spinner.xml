@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestSpinnerActivity"
+    android:padding="5dp"
+    android:orientation="vertical"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择您的排位分段"
+        android:textColor="#44BDED"
+        android:textSize="18sp"
+        />
+
+    <Spinner
+        android:id="@+id/spinner_one"
+        android:layout_width="100dp"
+        android:layout_height="64dp"
+        android:entries="@array/data"
+        android:prompt="@string/spinner_title"
+        android:spinnerMode="dialog"
+        >
+
+    </Spinner>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="选择你拿手的英雄"
+        android:textColor="#F5684A"
+        android:textSize="18sp"
+        />
+
+    <Spinner
+        android:id="@+id/spinner_two"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp">
+
+    </Spinner>
+
+</LinearLayout>

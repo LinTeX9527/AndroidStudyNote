@@ -37,9 +37,12 @@
     <string name="customadapter_attr">自定义Adapter抽象优化</string>
     <string name="multilayoutadapter_attr">子项多布局的Adapter</string>
     <string name="gridview_attr">GridView基础</string>
+    <string name="default_text">占位文本</string>
 
     <!--ListView Item 多布局中用来区分不同的子项-->
     <item name="TAG_APP" type="id"></item>
     <item name="TAG_BOOK" type="id"></item>
 
+    <string name="spinner_title">分段选择</string>
+    <string name="spinner_attr">Spinner单选列表基础</string>
 </resources>
