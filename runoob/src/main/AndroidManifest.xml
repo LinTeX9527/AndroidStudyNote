@@ -230,19 +230,28 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".TestAutoCompleteTextViewActivity"
             android:label="@string/autocompletetextview_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestAutoCompleteTextViewActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TestExpandableListViewActivity"
+            android:label="@string/expandablelistview_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestAutoCompleteTextViewActivity"/>
+                <action android:name="com.lintex9527.runoob.TestExpandableListViewActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
         </activity>
-
     </application>
 
 </manifest>

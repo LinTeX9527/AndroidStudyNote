@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         index = 0;
 
+        addTestItem(R.string.expandablelistview_attr, "com.lintex9527.runoob.TestExpandableListViewActivity");
         addTestItem(R.string.textview_attr, "com.lintex9527.runoob.TestTextViewActivity");
         addTestItem(R.string.edittext_attr, "com.lintex9527.runoob.TestEditTextActivity");
         addTestItem(R.string.button_attr, "com.lintex9527.runoob.TestButtonActivity");
