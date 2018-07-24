@@ -220,18 +220,29 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".TestSpinnerActivity"
             android:label="@string/spinner_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestSpinnerActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TestAutoCompleteTextViewActivity"
+            android:label="@string/autocompletetextview_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestSpinnerActivity"/>
+                <action android:name="com.lintex9527.runoob.TestAutoCompleteTextViewActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
         </activity>
+
     </application>
 
 </manifest>
