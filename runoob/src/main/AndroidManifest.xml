@@ -260,18 +260,29 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".TestViewFlipper2Activity"
             android:label="@string/viewflipper_dynamic_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestViewFlipper2Activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TestNotificationActivity"
+            android:label="@string/notification_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestViewFlipper2Activity"/>
+                <action android:name="com.lintex9527.runoob.TestNotificationActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
         </activity>
+        <activity android:name=".OtherActivity"></activity>
     </application>
 
 </manifest>

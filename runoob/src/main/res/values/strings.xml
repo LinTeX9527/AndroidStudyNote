@@ -49,4 +49,5 @@
     <string name="expandablelistview_attr">ExpandableListView基础</string>
     <string name="viewflipper_static_attr">ViewFlipper静态图片轮播</string>
     <string name="viewflipper_dynamic_attr">ViewFlipper手势动态切换图片</string>
+    <string name="notification_attr">Notification基础</string>
 </resources>

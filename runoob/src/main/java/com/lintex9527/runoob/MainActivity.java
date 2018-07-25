@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         index = 0;
 
+        addTestItem(R.string.notification_attr, "com.lintex9527.runoob.TestNotificationActivity");
         addTestItem(R.string.expandablelistview_attr, "com.lintex9527.runoob.TestExpandableListViewActivity");
         addTestItem(R.string.viewflipper_static_attr, "com.lintex9527.runoob.TestViewFlipperActivity");
         addTestItem(R.string.viewflipper_dynamic_attr, "com.lintex9527.runoob.TestViewFlipper2Activity");
