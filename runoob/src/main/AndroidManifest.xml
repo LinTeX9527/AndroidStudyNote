@@ -250,14 +250,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".TestViewFlipperActivity"
             android:label="@string/viewflipper_static_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestViewFlipperActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TestViewFlipper2Activity"
+            android:label="@string/viewflipper_dynamic_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestViewFlipperActivity"/>
+                <action android:name="com.lintex9527.runoob.TestViewFlipper2Activity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
