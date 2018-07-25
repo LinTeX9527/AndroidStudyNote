@@ -1,12 +1,18 @@
 package com.lintex9527.runoob;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lintex9527.androidtools.EditTextWithDel;
@@ -17,12 +23,15 @@ import com.lintex9527.androidtools.EditTextWithDel;
  * 参见教程：
  * http://www.runoob.com/w3cnote/android-tutorial-edittext.html
  *
+ * 自定义Toast布局，参见
+ * http://www.runoob.com/w3cnote/android-tutorial-toast.html
+ *
  */
 public class TestEditTextActivity extends Activity {
 
     private static final String TAG = TestEditTextActivity.class.getName();
 
-    private Toast mToast;
+    private Context mContext;
 
     private EditTextWithDel editUsername;
 
@@ -34,6 +43,7 @@ public class TestEditTextActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_edit_text);
+        mContext = TestEditTextActivity.this;
 
         initGUI();
     }
@@ -45,8 +55,6 @@ public class TestEditTextActivity extends Activity {
      * textPassword 数值为 0x81
      */
     private void initGUI() {
-
-        mToast = Toast.makeText(TestEditTextActivity.this, "", Toast.LENGTH_SHORT);
 
         // 输入框：用户名
         editUsername = (EditTextWithDel) findViewById(R.id.edit_username);
@@ -95,8 +103,22 @@ public class TestEditTextActivity extends Activity {
         });
     }
 
+
+    /**
+     * 显示自定义的Toast
+     * @param msg 提示信息
+     */
     private void showToast(String msg) {
-        mToast.setText(msg);
-        mToast.show();
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.view_toast_custom, (ViewGroup) findViewById(R.id.lly_toast));
+        ImageView img_logo = (ImageView) view.findViewById(R.id.img_logo);
+        TextView tv_msg = (TextView) view.findViewById(R.id.tv_msg);
+        tv_msg.setText(msg);
+
+        Toast toast = new Toast(mContext);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(view);
+        toast.show();
     }
 }
