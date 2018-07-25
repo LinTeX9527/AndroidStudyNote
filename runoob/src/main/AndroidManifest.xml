@@ -240,14 +240,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".TestExpandableListViewActivity"
             android:label="@string/expandablelistview_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestExpandableListViewActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TestViewFlipperActivity"
+            android:label="@string/viewflipper_static_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestExpandableListViewActivity"/>
+                <action android:name="com.lintex9527.runoob.TestViewFlipperActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 

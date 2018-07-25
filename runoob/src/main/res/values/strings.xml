@@ -47,4 +47,5 @@
     <string name="spinner_attr">Spinner单选列表基础</string>
     <string name="autocompletetextview_attr">自动补全输入框</string>
     <string name="expandablelistview_attr">ExpandableListView基础</string>
+    <string name="viewflipper_static_attr">ViewFlipper静态图片轮播</string>
 </resources>
