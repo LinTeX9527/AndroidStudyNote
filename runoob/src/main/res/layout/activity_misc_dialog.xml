@@ -27,4 +27,20 @@
         android:layout_height="wrap_content"
         android:text="可更新进度的进度条对话框"
         />
+
+    <Button
+        android:id="@+id/btn_datepick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="日期选择对话框"
+        />
+
+    <Button
+        android:id="@+id/btn_timepick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="时间选择对话框"
+        />
+
+
 </LinearLayout>

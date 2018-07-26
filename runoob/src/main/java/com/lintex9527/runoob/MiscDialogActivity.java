@@ -1,6 +1,8 @@
 package com.lintex9527.runoob;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -8,6 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 /**
  * 其他几种常用的对话框
@@ -18,6 +25,9 @@ public class MiscDialogActivity extends AppCompatActivity implements View.OnClic
     private Button btn_one;
     private Button btn_two;
     private Button btn_three;
+    private Button btn_datepick;
+    private Button btn_timepick;
+    private String message = "";
 
     private ProgressDialog pd1 = null;
     private ProgressDialog pd2 = null;
@@ -57,10 +67,14 @@ public class MiscDialogActivity extends AppCompatActivity implements View.OnClic
         btn_one = (Button) findViewById(R.id.btn_pgdialog_one);
         btn_two = (Button) findViewById(R.id.btn_pgdialog_two);
         btn_three = (Button) findViewById(R.id.btn_pgdialog_three);
+        btn_datepick = (Button) findViewById(R.id.btn_datepick);
+        btn_timepick = (Button) findViewById(R.id.btn_timepick);
 
         btn_one.setOnClickListener(this);
         btn_two.setOnClickListener(this);
         btn_three.setOnClickListener(this);
+        btn_datepick.setOnClickListener(this);
+        btn_timepick.setOnClickListener(this);
     }
 
     @Override
@@ -116,6 +130,43 @@ public class MiscDialogActivity extends AppCompatActivity implements View.OnClic
                         }
                     }
                 }.start();
+                break;
+
+            case R.id.btn_datepick:
+                // 日期选择对话框
+                Calendar calendar = Calendar.getInstance();
+                new DatePickerDialog(mContext,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                // 这里获取到的月份需要加上1
+                                message = "";
+                                message += "你选择的是：" + year + "年" + (monthOfYear+1) + "月" + dayOfMonth + "日";
+                                Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+                            }
+                        },
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)
+                ).show();
+                break;
+
+            case R.id.btn_timepick:
+                // 时间选择对话框
+                Calendar calendar1 = Calendar.getInstance();
+                new TimePickerDialog(mContext,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                                message = "";
+                                message += "你选择的时间是：" + hourOfDay + "时" + minute + "分";
+                                Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+                            }
+                        },
+                        calendar1.get(Calendar.HOUR_OF_DAY),
+                        calendar1.get(Calendar.MINUTE),
+                        true
+                ).show();
                 break;
         }
     }
