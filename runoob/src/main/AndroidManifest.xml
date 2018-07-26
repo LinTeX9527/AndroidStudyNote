@@ -281,14 +281,24 @@
             </intent-filter>
         </activity>
         <activity android:name=".OtherActivity" />
-
         <activity
             android:name=".TestAlertDialogActivity"
             android:label="@string/alertdialog_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestAlertDialogActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MiscDialogActivity"
+            android:label="@string/miscdialog_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestAlertDialogActivity"/>
+                <action android:name="com.lintex9527.runoob.MiscDialogActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 

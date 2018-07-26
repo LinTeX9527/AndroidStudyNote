@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MiscDialogActivity">
+
+    <Button
+        android:id="@+id/btn_pgdialog_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="普通进度条对话框"
+        />
+
+    <Button
+        android:id="@+id/btn_pgdialog_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="可设置风格的进度条对话框"
+        />
+
+    <Button
+        android:id="@+id/btn_pgdialog_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="可更新进度的进度条对话框"
+        />
+</LinearLayout>
