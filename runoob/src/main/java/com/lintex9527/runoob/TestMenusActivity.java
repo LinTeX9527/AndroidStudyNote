@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +48,8 @@ public class TestMenusActivity extends AppCompatActivity {
     private TextView tv_context;
     private TextView tv_context_submenu;
 
+    private Button btn_popupmenu;
+
     private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +67,36 @@ public class TestMenusActivity extends AppCompatActivity {
 
         tv_context_submenu = (TextView) findViewById(R.id.tv_submenu);
         registerForContextMenu(tv_context_submenu);
+
+
+        // 初始化和弹出式菜单相关的资源
+        btn_popupmenu = (Button) findViewById(R.id.btn_popupmenu);
+        btn_popupmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 加载弹出式菜单，并设置事件监听器
+                PopupMenu popupMenu = new PopupMenu(mContext, btn_popupmenu);
+                popupMenu.getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.smallpig:
+                                Toast.makeText(mContext, "你点击了小猪", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.bigpig:
+                                Toast.makeText(mContext, "你点击了大猪", Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                        return true;
+//                        return false; // 原始的语句
+                    }
+                });
+
+                // 必须要显示出来
+                popupMenu.show();
+            }
+        });
     }
 
     /**
