@@ -36,7 +36,7 @@ import android.widget.Toast;
  * TODO: ViewPager 和 DrawerLayout 暂时留着，以后再学。
  * http://www.runoob.com/w3cnote/android-tutorial-viewpager.html
  * http://www.runoob.com/w3cnote/android-tutorial-drawerlayout.html
- * 
+ *
  */
 public class TestMenusActivity extends AppCompatActivity {
 

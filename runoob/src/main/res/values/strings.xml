@@ -57,4 +57,5 @@
     <string name="font_blue">蓝色</string>
     <string name="font_green">绿色</string>
     <string name="font_red">红色</string>
+    <string name="androidevent_attr">安卓的事件处理机制</string>
 </resources>

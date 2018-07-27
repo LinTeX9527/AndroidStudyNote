@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TestEventListenerActivity">
+
+    <!--使用自定义控件必须要使用完整的类名，包括包的路径-->
+    <com.lintex9527.custom.MyButton
+        android:id="@+id/btn_test_events"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="按钮回调事件"
+        android:textSize="22sp"
+        />
+
+    <com.lintex9527.custom.MyTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="自定义TextView，Logcat回调事件"
+        android:gravity="center_horizontal"
+        android:textSize="22sp"
+        />
+
+</LinearLayout>

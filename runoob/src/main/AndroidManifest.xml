@@ -311,23 +311,29 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
-
         <activity
             android:name=".TestMenusActivity"
             android:label="@string/menus_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestMenusActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".TestEventListenerActivity"
+            android:label="@string/androidevent_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestMenusActivity"/>
+                <action android:name="com.lintex9527.runoob.TestEventListenerActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
         </activity>
-
-
-
     </application>
 
 </manifest>
