@@ -32,6 +32,11 @@ import android.widget.Toast;
  *
  * SubMenu 子菜单
  * 只不过是在子菜单中有嵌套了一层 menu 而已
+ *
+ * TODO: ViewPager 和 DrawerLayout 暂时留着，以后再学。
+ * http://www.runoob.com/w3cnote/android-tutorial-viewpager.html
+ * http://www.runoob.com/w3cnote/android-tutorial-drawerlayout.html
+ * 
  */
 public class TestMenusActivity extends AppCompatActivity {
 
