@@ -1,5 +1,6 @@
 package com.lintex9527.runoob;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -25,6 +27,9 @@ import android.widget.TextView;
  * 关于OptionsMenu，一般只用重写下面两个方法即可
  * public boolean onCreateOptionsMenu(Menu menu) 初始化菜单项
  * public boolean onOptionsMenuSelected(MenuItem item) 菜单项被选中时触发，这里完成事件处理
+ *
+ * SubMenu 子菜单
+ * 只不过是在子菜单中有嵌套了一层 menu 而已
  */
 public class TestMenusActivity extends AppCompatActivity {
 
@@ -39,17 +44,25 @@ public class TestMenusActivity extends AppCompatActivity {
 
     private TextView tv_test;
     private TextView tv_context;
+    private TextView tv_context_submenu;
 
+    private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_menus);
+
+        mContext = TestMenusActivity.this;
 
         tv_test = (TextView) findViewById(R.id.tv_test);
 
         tv_context = (TextView) findViewById(R.id.tv_context);
         // 必须调用方法 registerForContextMenu(View) 来显示地为某一个View注册上下文菜单
         registerForContextMenu(tv_context);
+
+
+        tv_context_submenu = (TextView) findViewById(R.id.tv_submenu);
+        registerForContextMenu(tv_context_submenu);
     }
 
     /**
@@ -122,10 +135,19 @@ public class TestMenusActivity extends AppCompatActivity {
      */
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
         // 只用添加下面这两行代码就可以添加上下文菜单
         MenuInflater inflater = new MenuInflater(this);
-        inflater.inflate(R.menu.menu_context, menu);
 
+        switch (v.getId()) {
+            case R.id.tv_context:
+                inflater.inflate(R.menu.menu_context, menu);
+                break;
+
+            case R.id.tv_submenu:
+                inflater.inflate(R.menu.menu_sub, menu);
+                break;
+        }
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 
@@ -139,6 +161,7 @@ public class TestMenusActivity extends AppCompatActivity {
     public boolean onContextItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            // 以下菜单项是上下文菜单中的
             case R.id.blue:
                 tv_context.setTextColor(Color.BLUE);
                 break;
@@ -147,6 +170,17 @@ public class TestMenusActivity extends AppCompatActivity {
                 break;
             case R.id.red:
                 tv_context.setTextColor(Color.RED);
+                break;
+
+            // 以下菜单项是子菜单项中的
+            case R.id.one:
+                Toast.makeText(mContext, "选了：" + item.getItemId() + ", " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.two:
+                Toast.makeText(mContext, "选了：" + item.getItemId() + ", " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.three:
+                Toast.makeText(mContext, "选了：" + item.getItemId() + ", " + item.getTitle(), Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onContextItemSelected(item);

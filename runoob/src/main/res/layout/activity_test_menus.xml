@@ -23,7 +23,17 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="长按我变色"
+        android:text="长按我变色（上下文菜单）"
+        android:textSize="22sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_submenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="（上下文菜单-->子菜单）"
         android:textSize="22sp"
         />
 
