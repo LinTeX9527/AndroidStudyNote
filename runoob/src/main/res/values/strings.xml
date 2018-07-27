@@ -54,4 +54,7 @@
     <string name="miscdialog_attr">其他常见的对话框</string>
     <string name="popupwindow_attr">PopupWindow悬浮框</string>
     <string name="menus_attr">各种菜单</string>
+    <string name="font_blue">蓝色</string>
+    <string name="font_green">绿色</string>
+    <string name="font_red">红色</string>
 </resources>
