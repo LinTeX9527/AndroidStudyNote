@@ -46,7 +46,7 @@ public class MyButton extends Button {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         super.onKeyDown(keyCode, event);
         Log.d(TAG, "onKeyDown() 调用，" + "keyCode: " + keyCode + ", event: " + event.getSource());
-        return true; // 返回true就不会传递事件
+        return false; // 返回true就不会传递事件，返回false就会继续传递
     }
 
 
@@ -73,6 +73,6 @@ public class MyButton extends Button {
     public boolean onTouchEvent(MotionEvent event) {
         super.onTouchEvent(event);
         Log.d(TAG, "onTouchEvent() 调用，" + " event: " + event.getSource());
-        return true;
+        return false; // TODO:这个 true 改为 false ，感觉button弹起来响应很慢。
     }
 }
