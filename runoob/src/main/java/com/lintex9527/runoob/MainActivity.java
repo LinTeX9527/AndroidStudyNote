@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         index = 0;
 
+        addTestItem(R.string.popupwindow_attr, "com.lintex9527.runoob.TestPopupWindowActivity");
         addTestItem(R.string.alertdialog_attr, "com.lintex9527.runoob.TestAlertDialogActivity");
         addTestItem(R.string.miscdialog_attr, "com.lintex9527.runoob.MiscDialogActivity");
         addTestItem(R.string.notification_attr, "com.lintex9527.runoob.TestNotificationActivity");

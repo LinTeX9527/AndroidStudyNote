@@ -52,4 +52,5 @@
     <string name="notification_attr">Notification基础</string>
     <string name="alertdialog_attr">AlertDialog多种样式</string>
     <string name="miscdialog_attr">其他常见的对话框</string>
+    <string name="popupwindow_attr">PopupWindow悬浮框</string>
 </resources>

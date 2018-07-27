@@ -291,14 +291,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MiscDialogActivity"
             android:label="@string/miscdialog_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.MiscDialogActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TestPopupWindowActivity"
+            android:label="@string/popupwindow_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.MiscDialogActivity"/>
+                <action android:name="com.lintex9527.runoob.TestPopupWindowActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
