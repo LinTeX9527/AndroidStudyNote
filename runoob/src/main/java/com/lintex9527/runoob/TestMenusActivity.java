@@ -139,6 +139,7 @@ public class TestMenusActivity extends AppCompatActivity {
         // 只用添加下面这两行代码就可以添加上下文菜单
         MenuInflater inflater = new MenuInflater(this);
 
+        // 为不同的View 加载不同的上下文菜单，最重要的区别就是通过 switch 选在不同的菜单
         switch (v.getId()) {
             case R.id.tv_context:
                 inflater.inflate(R.menu.menu_context, menu);
@@ -180,6 +181,19 @@ public class TestMenusActivity extends AppCompatActivity {
                 Toast.makeText(mContext, "选了：" + item.getItemId() + ", " + item.getTitle(), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.three:
+                Toast.makeText(mContext, "选了：" + item.getItemId() + ", " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.sub01:
+                Toast.makeText(mContext, "选了：" + item.getItemId() + ", " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.sub02:
+                Toast.makeText(mContext, "选了：" + item.getItemId() + ", " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.sub03:
+                Toast.makeText(mContext, "选了：" + item.getItemId() + ", " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.sub04:
                 Toast.makeText(mContext, "选了：" + item.getItemId() + ", " + item.getTitle(), Toast.LENGTH_SHORT).show();
                 break;
         }

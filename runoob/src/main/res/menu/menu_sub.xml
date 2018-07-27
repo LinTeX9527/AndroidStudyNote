@@ -11,4 +11,15 @@
         </menu>
     </item>
 
+    <item android:id="@+id/submenu02" android:title="选择交通工具">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/sub01" android:title="火车"/>
+                <item android:id="@+id/sub02" android:title="飞机"/>
+                <item android:id="@+id/sub03" android:title="轮船"/>
+                <item android:id="@+id/sub04" android:title="汽车"/>
+            </group>
+        </menu>
+    </item>
+
 </menu>
