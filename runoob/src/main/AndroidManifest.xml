@@ -342,15 +342,24 @@
             </intent-filter>
         </activity>
         <activity android:name=".CalculatePrimeActivity" />
-
-
         <activity
             android:name=".TestMultiPointerActivity"
             android:label="@string/multipointer_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestMultiPointerActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TestConfigurationActivity"
+            android:label="@string/configuration_attr"
             android:launchMode="singleInstance"
+            android:configChanges="orientation"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestMultiPointerActivity"/>
+                <action android:name="com.lintex9527.runoob.TestConfigurationActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 

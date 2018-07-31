@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         index = 0;
 
+        addTestItem(R.string.configuration_attr, "com.lintex9527.runoob.TestConfigurationActivity");
         addTestItem(R.string.multipointer_attr, "com.lintex9527.runoob.TestMultiPointerActivity");
         addTestItem(R.string.handler_attr, "com.lintex9527.runoob.TestHandlerActivity");
         addTestItem(R.string.androidevent_attr, "com.lintex9527.runoob.TestEventListenerActivity");
