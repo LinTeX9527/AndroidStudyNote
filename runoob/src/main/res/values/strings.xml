@@ -59,4 +59,5 @@
     <string name="font_red">红色</string>
     <string name="androidevent_attr">安卓的事件处理机制</string>
     <string name="handler_attr">Handler示例</string>
+    <string name="multipointer_attr">多点触摸</string>
 </resources>
