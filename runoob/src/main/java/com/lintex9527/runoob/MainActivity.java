@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         index = 0;
 
+        addTestItem(R.string.handler_attr, "com.lintex9527.runoob.TestHandlerActivity");
         addTestItem(R.string.androidevent_attr, "com.lintex9527.runoob.TestEventListenerActivity");
         addTestItem(R.string.menus_attr, "com.lintex9527.runoob.TestMenusActivity");
         addTestItem(R.string.popupwindow_attr, "com.lintex9527.runoob.TestPopupWindowActivity");
