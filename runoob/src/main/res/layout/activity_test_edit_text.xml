@@ -26,7 +26,7 @@
             android:background="@color/colorAccent"
             />
 
-        <com.lintex9527.androidtools.EditTextWithDel
+        <com.lintex9527.custom.EditTextWithDel
             android:id="@+id/edit_username"
             android:layout_marginTop="60dp"
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:inputType="textPersonName"
             />
 
-        <com.lintex9527.androidtools.EditTextWithDel
+        <com.lintex9527.custom.EditTextWithDel
             android:id="@+id/edit_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

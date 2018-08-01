@@ -354,12 +354,22 @@
         </activity>
         <activity
             android:name=".TestConfigurationActivity"
-            android:label="@string/configuration_attr"
-            android:launchMode="singleInstance"
             android:configChanges="orientation"
+            android:label="@string/configuration_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestConfigurationActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TestAsyncTaskActivity"
+            android:label="@string/asynctask_attr"
+            android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestConfigurationActivity"/>
+                <action android:name="com.lintex9527.runoob.TestAsyncTaskActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 

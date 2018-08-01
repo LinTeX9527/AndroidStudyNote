@@ -61,4 +61,5 @@
     <string name="handler_attr">Handler示例</string>
     <string name="multipointer_attr">多点触摸</string>
     <string name="configuration_attr">Configuration基础</string>
+    <string name="asynctask_attr">AsyncTask异步任务</string>
 </resources>

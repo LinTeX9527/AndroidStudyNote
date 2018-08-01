@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ToggleButton;
 
-import com.lintex9527.androidtools.CircleProgressBar;
+import com.lintex9527.custom.CircleProgressBar;
 
 /**
  * 教程：

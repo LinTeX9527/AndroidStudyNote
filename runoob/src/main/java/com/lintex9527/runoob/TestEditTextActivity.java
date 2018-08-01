@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lintex9527.androidtools.EditTextWithDel;
+import com.lintex9527.custom.EditTextWithDel;
 
 /**
  *
