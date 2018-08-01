@@ -30,12 +30,26 @@ public class MyAsyncTask extends AsyncTask<Integer, Integer, String> {
     @Override
     protected String doInBackground(Integer... integers) {
         DelayOperator dop = new DelayOperator();
+        int step = 10;
+        String retval = "";
+        boolean flag_cancelled = false;
         int i = 0;
-        for (i = 0; i <= 100; i += 10) {
-            dop.delay();
-            publishProgress(i);
+        for (i = 0; i <= 100; i += step) {
+            // 加入 isCancelled() 检测，尽快从doInBackground() 中返回
+            if (isCancelled()) {
+                flag_cancelled = true;
+                retval = retval + "任务被取消";
+                break;
+            } else {
+                dop.delay();
+                publishProgress(i);
+            }
         }
-        return i + integers[0].intValue() + "";
+        // 决定返回值
+        if (!flag_cancelled) {
+            retval = "入口参数:" + integers[0].intValue() + "，结果：" + (i-step);
+        }
+        return  retval;
     }
 
 
@@ -45,8 +59,9 @@ public class MyAsyncTask extends AsyncTask<Integer, Integer, String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        txt.setText("开始执行异步线程");
+        txt.setText("开始执行异步任务");
         txt.setTextColor(Color.GREEN);
+        pgbar.setProgress(0);
     }
 
 
@@ -59,18 +74,34 @@ public class MyAsyncTask extends AsyncTask<Integer, Integer, String> {
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
         int value = values[0];
+        txt.setText("任务执行中" + value + "%...");
+        txt.setTextColor(Color.MAGENTA);
         pgbar.setProgress(value); // 更新进度条进度
     }
 
 
     /**
-     * 等方法doInBackground()执行完毕，就运行这个方法
-     * @param s
+     * 用户取消任务最后的回调方法，在doInBackground()之后调用。
+     * @param result 从doInBackground()中返回的结果。
      */
     @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-        txt.setText("异步任务执行结束");
+    protected void onCancelled(String result) {
+        super.onCancelled(result);
+        txt.setText(result);
+        txt.setTextColor(Color.RED);
+        pgbar.setProgress(0);
+    }
+
+    /**
+     * 等方法doInBackground()执行完毕，就运行这个方法
+     * 在UI线程中执行
+     * @param result 从doInBackground()返回来的结果
+     */
+    @Override
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
+        txt.setText(result);
         txt.setTextColor(Color.BLUE);
+        pgbar.setProgress(100);
     }
 }

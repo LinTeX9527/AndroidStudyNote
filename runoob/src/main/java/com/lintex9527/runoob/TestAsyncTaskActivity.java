@@ -17,7 +17,9 @@ public class TestAsyncTaskActivity extends AppCompatActivity {
 
     private TextView txttitle;
     private ProgressBar pgbar;
-    private Button btnUpdate;
+    private Button btnStart;
+    private Button btnStop;
+    private MyAsyncTask myAsyncTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +32,23 @@ public class TestAsyncTaskActivity extends AppCompatActivity {
     private void initViews() {
         txttitle = (TextView) findViewById(R.id.txt_title);
         pgbar = (ProgressBar) findViewById(R.id.pgbar);
-        btnUpdate = (Button) findViewById(R.id.btn_update);
+        btnStart = (Button) findViewById(R.id.btn_task_start);
 
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
+        btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyAsyncTask myAsyncTask = new MyAsyncTask(txttitle, pgbar);
+                myAsyncTask = new MyAsyncTask(txttitle, pgbar);
                 myAsyncTask.execute(1000);
+            }
+        });
+
+        btnStop = (Button) findViewById(R.id.btn_task_stop);
+        btnStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (myAsyncTask != null) {
+                    myAsyncTask.cancel(true);
+                }
             }
         });
     }
