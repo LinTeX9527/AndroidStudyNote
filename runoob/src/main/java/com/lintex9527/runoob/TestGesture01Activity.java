@@ -1,10 +1,13 @@
 package com.lintex9527.runoob;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.widget.Toast;
 
 /**
  * Gesture 手势
@@ -26,16 +29,23 @@ public class TestGesture01Activity extends AppCompatActivity {
 
     private static final String TAG = TestGesture01Activity.class.getName();
 
-    private MyGestureListener mgListener;
+    // 判断移动距离的最小值
+    private static final int MOVE_MIN_Y = 200;
+
+    private UpDownGestureListener mgListener;
     private GestureDetector mgDetector;
+
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_gesture01);
 
+        mContext = TestGesture01Activity.this;
+
         // 实例化GestureListener 和 GestureDetector 对象
-        mgListener = new MyGestureListener();
+        mgListener = new UpDownGestureListener();
         mgDetector = new GestureDetector(this, mgListener);
     }
 
@@ -85,6 +95,30 @@ public class TestGesture01Activity extends AppCompatActivity {
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
             Log.d(TAG, "onFling() 迅速滑动并松开");
             return false;
+        }
+    }
+
+    /**
+     * 自定义一个手势识别的类，继承自 GestureDetector.SimpleOnGestureListener
+     * 这里实现快速滑动的检测方法 onFling()
+     * 手指上滑启动新的Activity
+     * 手指下滑关闭当前的Activity
+     */
+    private class UpDownGestureListener extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            if (e1.getY() - e2.getY() > MOVE_MIN_Y) { // 上滑
+                startActivity(new Intent(TestGesture01Activity.this, TestGesture01Activity.class));// 启动新的Activity
+                Toast.makeText(mContext, "上滑启动Activity", Toast.LENGTH_SHORT).show();
+            } else if (e2.getY() - e1.getY() > MOVE_MIN_Y) { // 下滑
+                finish(); // 关闭当前Activity
+                Toast.makeText(mContext, "下滑关闭当前Activity", Toast.LENGTH_SHORT).show();
+            } else if (e1.getX() - e2.getX() > MOVE_MIN_Y) { // 左滑
+                Toast.makeText(mContext, "向左滑", Toast.LENGTH_SHORT).show();
+            } else if (e2.getX() - e1.getX() > MOVE_MIN_Y) { // 右滑
+                Toast.makeText(mContext, "向右滑", Toast.LENGTH_SHORT).show();
+            }
+            return true;
         }
     }
 }
