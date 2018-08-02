@@ -365,12 +365,22 @@
         </activity>
         <activity
             android:name=".TestAsyncTaskActivity"
-            android:label="@string/asynctask_attr"
-            android:launchMode="singleInstance"
             android:configChanges="orientation|screenSize|keyboardHidden|layoutDirection"
+            android:label="@string/asynctask_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestAsyncTaskActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TestGesture01Activity"
+            android:label="@string/gesturebasic_attr"
+            android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestAsyncTaskActivity"/>
+                <action android:name="com.lintex9527.runoob.TestGesture01Activity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 

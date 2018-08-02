@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
         index = 0;
 
+
+        addTestItem(R.string.gesturebasic_attr, "com.lintex9527.runoob.TestGesture01Activity");
         addTestItem(R.string.asynctask_attr, "com.lintex9527.runoob.TestAsyncTaskActivity");
         addTestItem(R.string.configuration_attr, "com.lintex9527.runoob.TestConfigurationActivity");
         addTestItem(R.string.multipointer_attr, "com.lintex9527.runoob.TestMultiPointerActivity");
