@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lintex9527.runoob">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -377,10 +379,20 @@
         <activity
             android:name=".TestGesture01Activity"
             android:label="@string/gesturebasic_attr"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestGesture01Activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TestGesture02Activity"
+            android:label="@string/gestureadd_attr"
             android:launchMode="singleInstance"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestGesture01Activity"/>
+                <action android:name="com.lintex9527.runoob.TestGesture02Activity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 

@@ -63,4 +63,5 @@
     <string name="configuration_attr">Configuration基础</string>
     <string name="asynctask_attr">AsyncTask异步任务</string>
     <string name="gesturebasic_attr">Gesture识别基础</string>
+    <string name="gestureadd_attr">添加手势</string>
 </resources>

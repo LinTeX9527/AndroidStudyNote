@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TestGesture02Activity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:text="请在下方屏幕中绘制手势"
+        android:textSize="20sp"
+        />
+
+    <!--gestureStrokeType 设置手势是否需要一笔完成，multiple表示允许多笔-->
+    <android.gesture.GestureOverlayView
+        android:id="@+id/gesture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gestureStrokeType="multiple"
+        >
+
+    </android.gesture.GestureOverlayView>
+
+</LinearLayout>
