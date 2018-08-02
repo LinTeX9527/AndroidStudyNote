@@ -12,6 +12,10 @@ import com.lintex9527.custom.MyAsyncTask;
 /**
  * AsyncTask 异步任务
  * http://www.runoob.com/w3cnote/android-tutorial-ansynctask.html
+ *
+ * Android 旋转屏幕--处理Activity与AsyncTask的最佳解决方案
+ * https://www.cnblogs.com/jycboy/p/save_state_data.html
+ *
  */
 public class TestAsyncTaskActivity extends AppCompatActivity {
 

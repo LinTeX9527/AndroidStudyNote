@@ -34,15 +34,15 @@ public class MyAsyncTask extends AsyncTask<Integer, Integer, String> {
         String retval = "";
         boolean flag_cancelled = false;
         int i = 0;
-        for (i = 0; i <= 100; i += step) {
+        for (i = 0; i <= 1000; i += step) {
             // 加入 isCancelled() 检测，尽快从doInBackground() 中返回
             if (isCancelled()) {
                 flag_cancelled = true;
                 retval = retval + "任务被取消";
                 break;
             } else {
-                dop.delay();
-                publishProgress(i);
+                dop.delay(step);
+                publishProgress(i/10); // 发布任务进度，0~100 之间
             }
         }
         // 决定返回值
