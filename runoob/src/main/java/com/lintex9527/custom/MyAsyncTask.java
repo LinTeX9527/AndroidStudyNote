@@ -54,6 +54,7 @@ public class MyAsyncTask extends AsyncTask<Integer, Integer, String> {
 
 
     /**
+     * 在UI线程执行
      * 该方法在UI线程中运行，可以对UI控件进行设置
      */
     @Override
@@ -66,6 +67,7 @@ public class MyAsyncTask extends AsyncTask<Integer, Integer, String> {
 
 
     /**
+     * 在UI线程执行
      * 在 doInBackground() 方法中每次调用 publishProgress() 方法都会触发该方法
      * 它运行在UI线程中，可以对UI控件进行操作
      * @param values
@@ -81,7 +83,8 @@ public class MyAsyncTask extends AsyncTask<Integer, Integer, String> {
 
 
     /**
-     * 用户取消任务最后的回调方法，在doInBackground()之后调用。
+     * 在UI线程执行
+     * 用户取消任务最后的回调方法，在doInBackground()之后调用；
      * @param result 从doInBackground()中返回的结果。
      */
     @Override
@@ -93,8 +96,8 @@ public class MyAsyncTask extends AsyncTask<Integer, Integer, String> {
     }
 
     /**
-     * 等方法doInBackground()执行完毕，就运行这个方法
      * 在UI线程中执行
+     * 等方法doInBackground()执行完毕，就运行这个方法
      * @param result 从doInBackground()返回来的结果
      */
     @Override
