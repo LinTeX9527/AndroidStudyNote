@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lintex9527.runoob">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -11,6 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
+        <service android:name="com.lintex9527.custom.TestService01">
+            <intent-filter>
+                <action android:name="com.lintex9527.custom.TestService01.ACTION"/>
+            </intent-filter>
+        </service>
 
         <!-- 所有的测试项列在这个页面 -->
         <activity
@@ -389,10 +397,20 @@
         <activity
             android:name=".TestGesture02Activity"
             android:label="@string/gestureadd_attr"
-            android:launchMode="singleInstance"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestGesture02Activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TestServiceActivity"
+            android:label="@string/servicebasic_attr"
+            android:launchMode="standard"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestGesture02Activity"/>
+                <action android:name="com.lintex9527.runoob.TestServiceActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
