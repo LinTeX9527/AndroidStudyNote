@@ -1,5 +1,6 @@
 package com.lintex9527.runoob;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -23,7 +24,7 @@ import java.util.List;
  *
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     public final static String ITEM_DESCRIPTION = "DESCRIPTION";
     public final static String ITEM_ACTION = "ACTION";
