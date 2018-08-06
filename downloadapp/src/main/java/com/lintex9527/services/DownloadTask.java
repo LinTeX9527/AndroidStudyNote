@@ -2,6 +2,7 @@ package com.lintex9527.services;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.lintex9527.db.ThreadDAO;
 import com.lintex9527.db.ThreadDAOImp;
@@ -20,6 +21,9 @@ import java.util.List;
  * 下载任务类 -- 对一个文件进行下载
  */
 public class DownloadTask {
+
+    private static final String TAG = DownloadTask.class.getSimpleName();
+
     private Context mContext = null;
     private FileInfo mFileInfo = null;
     // TODO: 这里为什么是接口，而不是用实现？
@@ -86,7 +90,7 @@ public class DownloadTask {
                 // TODO: 开始下载
                 Intent intent = new Intent(DownloadService.ACTION_UPDATE);
                 mFinished += mThreadInfo.getFinished();
-                if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                if (conn.getResponseCode() == HttpURLConnection.HTTP_PARTIAL || conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     // 读取数据
                     input = conn.getInputStream();
                     byte[] buffer = new byte[1024 * 4];
@@ -97,10 +101,11 @@ public class DownloadTask {
                         raf.write(buffer, 0, len);
                         // 把下载进度发送广播给Activity
                         mFinished += len; // 更新已经下载的进度，百分比形式
-                        if (System.currentTimeMillis() - time > 500) { // 每隔500毫秒发送一次广播
+                        if (System.currentTimeMillis() - time > 500 || (mFinished * 100 / mFileInfo.getLength() >= 98)) { // 每隔500毫秒发送一次广播
                             time = System.currentTimeMillis();
                             intent.putExtra("finished", mFinished * 100 / mFileInfo.getLength());
                             mContext.sendBroadcast(intent);
+                            Log.d(TAG, "下载总字节个数：" + mFinished);
                         }
                         // 下载暂停时，保存下载进度
                         if (isPause) {
@@ -111,6 +116,7 @@ public class DownloadTask {
                         }
                     }
 
+                    Log.d(TAG, "退出while时下载总的字节个数： " + mFinished);
                     // 删除线程信息
                     mThreadDAO.deleteThread(mThreadInfo.getUrl(), mThreadInfo.getId());
                 }

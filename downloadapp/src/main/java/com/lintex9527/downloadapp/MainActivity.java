@@ -1,8 +1,10 @@
 package com.lintex9527.downloadapp;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -121,15 +123,29 @@ public class MainActivity extends AppCompatActivity {
 
         pbProgress.setMax(100);
 
+        // 注册广播接收器
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(DownloadService.ACTION_UPDATE);
+        registerReceiver(mReceiver, filter);
+
+
         // 创建文件信息对象
         final FileInfo fileInfo = new FileInfo(0,
                 "http://mm.chinasareview.com/wp-content/uploads/2016a/08/22/07.jpg",
                 "girl.jpg", 0, 0);
 
+//        final FileInfo fileInfo = new FileInfo(0,
+//                "http://www.imooc.com/mobile/imooc.apk",
+//                "imooc.apk", 0, 0);
+
         // 给按钮添加事件监听器
         btnStartDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                tvFileName.setText(fileInfo.getFileName());
+                pbProgress.setProgress(0);
+
                 // 通过Intent 把数据传递给DownloadService
                 Intent intent = new Intent(mContext, DownloadService.class);
                 intent.setAction(DownloadService.ACTION_START);
@@ -141,6 +157,10 @@ public class MainActivity extends AppCompatActivity {
         btnStopDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                tvFileName.setText("");
+                pbProgress.setProgress(0);
+
                 Intent intent = new Intent(mContext, DownloadService.class);
                 intent.setAction(DownloadService.ACTION_STOP);
                 intent.putExtra(DownloadService.KEY_FILEINFO, fileInfo);
@@ -148,4 +168,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(mReceiver);
+    }
+
+    /**
+     * 更新UI的广播接收器
+     */
+    BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (DownloadService.ACTION_UPDATE.equals(intent.getAction())) {
+                int finished = intent.getIntExtra("finished", 0);
+                Log.d(TAG, "广播接收器接收进度为：" + finished);
+                pbProgress.setProgress(finished); // 更新进度条
+            }
+        }
+    };
 }

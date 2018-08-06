@@ -35,6 +35,8 @@ public class DownloadService extends Service {
 
     public static final int MSG_INIT = 0x0;
 
+    private DownloadTask mTask = null;
+
     /**
      * 处理子线程回传的信息
      */
@@ -45,6 +47,9 @@ public class DownloadService extends Service {
                 case MSG_INIT:
                     FileInfo fileInfo = (FileInfo) msg.obj;
                     Log.i(TAG, "handleMessage() 中的 " + fileInfo.toString());
+                    // 在这里启动下载任务
+                    mTask = new DownloadTask(DownloadService.this, fileInfo);
+                    mTask.download();
                     break;
             }
         }
@@ -62,6 +67,10 @@ public class DownloadService extends Service {
         } else if (ACTION_STOP.equals(intent.getAction())) {
             FileInfo fileInfo = (FileInfo) intent.getSerializableExtra(KEY_FILEINFO);
             Log.i(TAG, "STOP: " + fileInfo.toString());
+            // 停止下载
+            if (mTask != null) {
+                mTask.isPause = true;
+            }
         }
         return super.onStartCommand(intent, flags, startId);
     }
