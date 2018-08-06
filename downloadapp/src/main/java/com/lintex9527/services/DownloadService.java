@@ -27,6 +27,7 @@ public class DownloadService extends Service {
 
     public static final String ACTION_START = "ACTION_START";
     public static final String ACTION_STOP = "ACTION_STOP";
+    public static final String ACTION_UPDATE = "ACTION_UPDATE";
     public static final String KEY_FILEINFO = "FileInfo";
     // 设置下载文件的路径
     public static final String DOWNLOAD_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/downloads/";

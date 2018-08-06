@@ -119,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
         btnStartDownload = (Button) findViewById(R.id.btn_start_download);
         btnStopDownload = (Button) findViewById(R.id.btn_stop_download);
 
+        pbProgress.setMax(100);
+
         // 创建文件信息对象
         final FileInfo fileInfo = new FileInfo(0,
                 "http://mm.chinasareview.com/wp-content/uploads/2016a/08/22/07.jpg",

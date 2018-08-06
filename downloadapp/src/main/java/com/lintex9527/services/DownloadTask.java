@@ -1,6 +1,7 @@
 package com.lintex9527.services;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.lintex9527.db.ThreadDAO;
 import com.lintex9527.db.ThreadDAOImp;
@@ -8,10 +9,12 @@ import com.lintex9527.entities.FileInfo;
 import com.lintex9527.entities.ThreadInfo;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 /**
  * 下载任务类 -- 对一个文件进行下载
@@ -22,11 +25,28 @@ public class DownloadTask {
     // TODO: 这里为什么是接口，而不是用实现？
     private ThreadDAO mThreadDAO = null;
 
+    private int mFinished = 0; // 已经下载的进度，百分比形式
+
+    public boolean isPause = false; // 决定下载线程是否继续
     public DownloadTask(Context context, FileInfo fileInfo) {
         mContext = context;
         mFileInfo = fileInfo;
         // TODO: 从这里明白，同一个接口可以套用不同的实现，所以上面应该定义接口类型的成员 mThreadDAO
         mThreadDAO = new ThreadDAOImp(mContext);
+    }
+
+
+    public void download () {
+        // 从数据库中读取上一次下载的进度信息，然后在启动线程开始下载
+        List<ThreadInfo> threadInfos = mThreadDAO.getThreads(mFileInfo.getUrl());
+        ThreadInfo threadInfo = null;
+        if (threadInfos.size() == 0) { // 如果是第一次下载
+            threadInfo = new ThreadInfo(0, mFileInfo.getUrl(), 0, mFileInfo.getLength(), 0);
+        } else { // 已经存在下载记录
+            threadInfo = threadInfos.get(0);
+        }
+        // 创建子线程进行下载
+        new DownloadThread(threadInfo).start();
     }
 
     /**
@@ -48,6 +68,8 @@ public class DownloadTask {
             }
 
             HttpURLConnection conn = null;
+            InputStream input = null;
+            RandomAccessFile raf = null;
             // 设置下载位置
             try {
                 URL url = new URL(mThreadInfo.getUrl());
@@ -59,12 +81,63 @@ public class DownloadTask {
                 conn.setRequestProperty("Range", "bytes=" + start + "-" + mThreadInfo.getEnd());
                 // 设置文件的写入位置
                 File file = new File(DownloadService.DOWNLOAD_PATH, mFileInfo.getFileName());
-                RandomAccessFile raf = new RandomAccessFile(file, "rwd");
+                raf = new RandomAccessFile(file, "rwd");
                 raf.seek(start); // 设置文件的写入位置
                 // TODO: 开始下载
+                Intent intent = new Intent(DownloadService.ACTION_UPDATE);
+                mFinished += mThreadInfo.getFinished();
+                if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                    // 读取数据
+                    input = conn.getInputStream();
+                    byte[] buffer = new byte[1024 * 4];
+                    int len = -1; // 每一次读取的长度
+                    long time = System.currentTimeMillis();
+                    while ((len = input.read(buffer)) != -1) {
+                        // 写入文件
+                        raf.write(buffer, 0, len);
+                        // 把下载进度发送广播给Activity
+                        mFinished += len; // 更新已经下载的进度，百分比形式
+                        if (System.currentTimeMillis() - time > 500) { // 每隔500毫秒发送一次广播
+                            time = System.currentTimeMillis();
+                            intent.putExtra("finished", mFinished * 100 / mFileInfo.getLength());
+                            mContext.sendBroadcast(intent);
+                        }
+                        // 下载暂停时，保存下载进度
+                        if (isPause) {
+                            mThreadDAO.updateThread(mThreadInfo.getUrl(),
+                                    mThreadInfo.getId(),
+                                    mFinished);
+                            return; // 退出循环，不再下载
+                        }
+                    }
 
+                    // 删除线程信息
+                    mThreadDAO.deleteThread(mThreadInfo.getUrl(), mThreadInfo.getId());
+                }
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                if (conn != null) {
+                    try {
+                        conn.disconnect();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (input != null) {
+                    try {
+                        input.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (raf != null) {
+                    try {
+                        raf.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
     }
