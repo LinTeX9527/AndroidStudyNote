@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         // 创建文件信息对象
         final FileInfo fileInfo = new FileInfo(0,
-                "http://readfree.me/edition/9d18f3cefc126ea49a3a66d10495c57e/down/%E5%8D%8A%E5%B0%8F%E6%97%B6%E6%BC%AB%E7%94%BB%E4%B8%AD%E5%9B%BD%E5%8F%B23.mobi",
-                "历史漫画.mobi", 0, 0);
+                "http://mm.chinasareview.com/wp-content/uploads/2016a/08/22/07.jpg",
+                "girl.jpg", 0, 0);
 
         // 给按钮添加事件监听器
         btnStartDownload.setOnClickListener(new View.OnClickListener() {
