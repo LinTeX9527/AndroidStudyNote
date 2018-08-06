@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DownloadApp</string>
+    <string name="stop_download">停止下载</string>
+    <string name="start_download">开始下载</string>
+</resources>
