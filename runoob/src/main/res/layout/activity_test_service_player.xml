@@ -46,5 +46,33 @@
         android:onClick="stopMusic"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#88A0EE"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="@string/example_intentservice"
+            android:textSize="20sp"
+            android:background="@color/colorPrimary"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="发送按钮点击次数给IntentService"
+            android:onClick="sendClickCount"
+            />
+    </LinearLayout>
+
 
 </LinearLayout>
