@@ -24,6 +24,9 @@ public class DownloadTask {
 
     private static final String TAG = DownloadTask.class.getSimpleName();
 
+    // 通过广播接收发出通知，当前文件下载进度是多少，百分比形式
+    public static final String UPDATE_PROGRESS_VALUE = "download_percent";
+
     private Context mContext = null;
     private FileInfo mFileInfo = null;
     // TODO: 这里为什么是接口，而不是用实现？
@@ -31,7 +34,7 @@ public class DownloadTask {
 
     private int mFinished = 0; // 已经下载的进度，百分比形式
 
-    public boolean isPause = false; // 决定下载线程是否继续
+    private boolean flag_stop = false; // 决定下载线程是否继续
     public DownloadTask(Context context, FileInfo fileInfo) {
         mContext = context;
         mFileInfo = fileInfo;
@@ -39,6 +42,13 @@ public class DownloadTask {
         mThreadDAO = new ThreadDAOImp(mContext);
     }
 
+
+    /**
+     * 外部条件出发才能改变停止位
+     */
+    public void stopDownload() {
+        flag_stop = true;
+    }
 
     public void download () {
         // 从数据库中读取上一次下载的进度信息，然后在启动线程开始下载
@@ -103,12 +113,13 @@ public class DownloadTask {
                         mFinished += len; // 更新已经下载的进度，百分比形式
                         if (System.currentTimeMillis() - time > 500 || (mFinished * 100 / mFileInfo.getLength() >= 98)) { // 每隔500毫秒发送一次广播
                             time = System.currentTimeMillis();
-                            intent.putExtra("finished", mFinished * 100 / mFileInfo.getLength());
+                            intent.putExtra(UPDATE_PROGRESS_VALUE, mFinished * 100 / mFileInfo.getLength());
                             mContext.sendBroadcast(intent);
                             Log.d(TAG, "下载总字节个数：" + mFinished);
                         }
                         // 下载暂停时，保存下载进度
-                        if (isPause) {
+                        if (flag_stop) {
+                            Log.d(TAG, "flag_stop 让下载停止");
                             mThreadDAO.updateThread(mThreadInfo.getUrl(),
                                     mThreadInfo.getId(),
                                     mFinished);
@@ -123,6 +134,7 @@ public class DownloadTask {
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
+                Log.d(TAG, "DownloadTask 结束，关闭输入输出流");
                 if (conn != null) {
                     try {
                         conn.disconnect();

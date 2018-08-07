@@ -25,6 +25,8 @@ import com.lintex9527.services.DownloadService;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.lintex9527.services.DownloadTask.UPDATE_PROGRESS_VALUE;
+
 
 /**
  * 慕课网--多线程下载实例
@@ -130,13 +132,19 @@ public class MainActivity extends AppCompatActivity {
 
 
         // 创建文件信息对象
-        final FileInfo fileInfo = new FileInfo(0,
-                "http://mm.chinasareview.com/wp-content/uploads/2016a/08/22/07.jpg",
-                "girl.jpg", 0, 0);
+//        final FileInfo fileInfo = new FileInfo(0,
+//                "http://mm.chinasareview.com/wp-content/uploads/2016a/08/22/07.jpg",
+//                "girl.jpg", 0, 0);
 
 //        final FileInfo fileInfo = new FileInfo(0,
 //                "http://www.imooc.com/mobile/imooc.apk",
 //                "imooc.apk", 0, 0);
+
+        //TODO: 为什么不能断点续传呢？
+        // B站安卓APP下载
+        final FileInfo fileInfo = new FileInfo(0,
+                "https://dl.hdslb.com/mobile/latest/iBiliPlayer-bili.apk?spm_id_from=333.47.download-link.1",
+                "bilibili.apk", 0, 0);
 
         // 给按钮添加事件监听器
         btnStartDownload.setOnClickListener(new View.OnClickListener() {
@@ -164,7 +172,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(mContext, DownloadService.class);
                 intent.setAction(DownloadService.ACTION_STOP);
                 intent.putExtra(DownloadService.KEY_FILEINFO, fileInfo);
+                // 再一次调用startService() 会停用服务
+                startService(intent);
+
                 stopService(intent);
+                Log.d(TAG, "点击了停止下载按钮");
             }
         });
     }
@@ -173,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // 广播接收器注册和反注册必须成对出现
         unregisterReceiver(mReceiver);
     }
 
@@ -183,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (DownloadService.ACTION_UPDATE.equals(intent.getAction())) {
-                int finished = intent.getIntExtra("finished", 0);
+                int finished = intent.getIntExtra(UPDATE_PROGRESS_VALUE, 0);
                 Log.d(TAG, "广播接收器接收进度为：" + finished);
                 pbProgress.setProgress(finished); // 更新进度条
             }

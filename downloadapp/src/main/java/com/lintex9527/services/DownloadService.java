@@ -38,7 +38,7 @@ public class DownloadService extends Service {
     private DownloadTask mTask = null;
 
     /**
-     * 处理子线程回传的信息
+     * 处理初始化子线程回传的信息，并启动真正的下载任务
      */
     Handler mHandler = new Handler() {
         @Override
@@ -59,17 +59,17 @@ public class DownloadService extends Service {
         // 获得Activity传来的参数
         if (ACTION_START.equals(intent.getAction())) {
             FileInfo fileInfo = (FileInfo) intent.getSerializableExtra(KEY_FILEINFO);
-            Log.i(TAG, "START: " + fileInfo.toString());
+            Log.d(TAG, "START: " + fileInfo.toString());
 
             // 启动子线程
             new InitThread(fileInfo).start();
 
         } else if (ACTION_STOP.equals(intent.getAction())) {
             FileInfo fileInfo = (FileInfo) intent.getSerializableExtra(KEY_FILEINFO);
-            Log.i(TAG, "STOP: " + fileInfo.toString());
+            Log.d(TAG, "STOP: " + fileInfo.toString());
             // 停止下载
             if (mTask != null) {
-                mTask.isPause = true;
+                mTask.stopDownload();
             }
         }
         return super.onStartCommand(intent, flags, startId);
@@ -96,6 +96,8 @@ public class DownloadService extends Service {
 
     /**
      * 初始化子线程
+     * 访问网络文件，获悉文件大小，并在本地创建文件，指定一样的大小。
+     * 最后通过Hander更新文件信息。
      */
     class InitThread extends Thread {
         private FileInfo mFileInfo = null;
