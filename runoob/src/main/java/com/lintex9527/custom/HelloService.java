@@ -23,6 +23,10 @@ import android.widget.Toast;
  * 为了便于比较 HelloIntentService，以下提供了 Service 类实现的代码示例，对于每一个启动请求，
  * 它均使用工作线程执行作业，且每次仅处理一个请求。
  *
+ * TODO: 服务销毁的问题
+ * 经过修改，onStartCommand() 中每次都启动一个新的线程来处理一个Intent。虽然能新建线程，但是线程何时终止，还不清楚。
+ * 以及每次调用 stopSelf() 能否终止也有问题。
+ *
  */
 public class HelloService extends Service {
     private static final String TAG = HelloService.class.getSimpleName();
@@ -50,7 +54,10 @@ public class HelloService extends Service {
             }
             // Stop the service using the startId, so that we don't stop
             // the service in the middle of handling another job.
-            stopSelf(msg.arg1);
+//            stopSelf(msg.arg1);
+
+            // 如果要一个线程处理一个Intent，则必须优先销毁当前的服务，而不是 stopSelf(msg.arg1);
+            stopSelf();
         }
     }
 
@@ -60,15 +67,15 @@ public class HelloService extends Service {
         // separate thread because the service normally runs in the process's
         // main thread, which we don't want to block. We also make it
         // background priority so CPU-intensive work will not disrupt our UI.
-        HandlerThread thread = new HandlerThread("ServiceStartArguments",
-                                                Process.THREAD_PRIORITY_BACKGROUND);
-        thread.start();
+//        HandlerThread thread = new HandlerThread("ServiceStartArguments",
+//                                                Process.THREAD_PRIORITY_BACKGROUND);
+//        thread.start();
 
         long threadid = Thread.currentThread().getId();
         Log.d(TAG, "[" + threadid + "] onCreate() 服务创建");
 
-        mServiceLooper = thread.getLooper();
-        mServiceHandler = new ServiceHandler(mServiceLooper);
+//        mServiceLooper = thread.getLooper();
+//        mServiceHandler = new ServiceHandler(mServiceLooper);
     }
 
     @Override
@@ -77,13 +84,25 @@ public class HelloService extends Service {
 
         Log.d(TAG, "[" + threadid + "] onStartCommand() 服务启动");
 
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////     每一次onStartCommand   都启动一个新的线程  /////////////////////
+        HandlerThread thread = new HandlerThread("ServiceStartArguments", Process.THREAD_PRIORITY_BACKGROUND);
+        thread.start();
+
+        mServiceLooper = thread.getLooper();
+        mServiceHandler = new ServiceHandler(mServiceLooper);
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
         Message msg = mServiceHandler.obtainMessage();
         msg.arg1 = startId;
         msg.arg2 = intent.getIntExtra(KEY_CLICK_COUNT, 0);
         mServiceHandler.sendMessage(msg);
 
         // If we get killed, after returning from here, restart.
-        return START_STICKY;
+//        return START_STICKY;
+
+//        return START_NOT_STICKY;
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Nullable
