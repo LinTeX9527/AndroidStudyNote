@@ -81,4 +81,6 @@
     <string name="input_query_num">输入要查询的序号</string>
     <string name="start_query">查询</string>
     <string name="aidl_server_attr">AIDL Service基础</string>
+    <string name="broadcast_case">广播接收器案例</string>
+    <string name="broadcast_attr">广播接收器</string>
 </resources>

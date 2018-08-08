@@ -443,10 +443,19 @@
         </activity>
         <activity
             android:name=".TestAIDLServiceActivity"
-            android:label="@string/aidl_server_attr"
+            android:label="@string/aidl_server_attr">
+            <intent-filter>
+                <action android:name="com.lintex9527.TestAIDLServiceActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TestBroadcastReceiverActivity"
+            android:label="@string/broadcast_attr"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.TestAIDLServiceActivity"/>
+                <action android:name="com.lintex9527.runoob.TestBroadcastReceiverActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
