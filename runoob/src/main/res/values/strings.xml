@@ -73,4 +73,8 @@
     <string name="example_intentservice">IntentService实例</string>
     <string name="multiple_call_intentservice">发送按钮点击次数给IntentService</string>
     <string name="one_thread_one_intent">扩展Service类，一个线程处理一个Intent</string>
+    <string name="bind_service">绑定服务</string>
+    <string name="unbind_service">解除绑定</string>
+    <string name="get_service_status">获取服务状态</string>
+    <string name="bindservice_attr">绑定方式启动服务测试</string>
 </resources>

@@ -11,23 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <service android:name="com.lintex9527.custom.TestService01">
             <intent-filter>
                 <action android:name="com.lintex9527.custom.TestService01.ACTION" />
             </intent-filter>
         </service>
+        <service android:name="com.lintex9527.custom.HelloIntentService" />
+        <service android:name="com.lintex9527.custom.HelloService" />
+        <service
+            android:name="com.lintex9527.custom.ExamBinderService"
+            android:exported="false"></service>
 
-        <service android:name="com.lintex9527.custom.HelloIntentService"/>
-
-        <service android:name="com.lintex9527.custom.HelloService"/>
-
-        <!--每一个Service必须在这里注册，否则不可用-->
+        <!-- 每一个Service必须在这里注册，否则不可用 -->
         <service
             android:name="com.lintex9527.custom.MyPlayerService"
-            android:label="@string/service_play_music_attr"
-            >
-        </service>
+            android:label="@string/service_play_music_attr"></service>
 
         <!-- 所有的测试项列在这个页面 -->
         <activity
@@ -426,10 +424,20 @@
         <activity
             android:name=".TestServicePlayerActivity"
             android:label="@string/service_play_music_attr"
-            android:launchMode="standard"
+            android:launchMode="standard">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestServicePlayerActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TestBinderServiceActivity"
+            android:label="@string/bindservice_attr"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestServicePlayerActivity"/>
+                <action android:name="com.lintex9527.runoob.TestBinderServiceActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
