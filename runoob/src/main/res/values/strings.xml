@@ -77,4 +77,8 @@
     <string name="unbind_service">解除绑定</string>
     <string name="get_service_status">获取服务状态</string>
     <string name="bindservice_attr">绑定方式启动服务测试</string>
+    <string name="show_result">显示查询结果</string>
+    <string name="input_query_num">输入要查询的序号</string>
+    <string name="start_query">查询</string>
+    <string name="aidl_server_attr">AIDL Service基础</string>
 </resources>

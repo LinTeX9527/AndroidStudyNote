@@ -20,12 +20,13 @@
         <service android:name="com.lintex9527.custom.HelloService" />
         <service
             android:name="com.lintex9527.custom.ExamBinderService"
-            android:exported="false"></service>
+            android:exported="false" />
 
         <!-- 每一个Service必须在这里注册，否则不可用 -->
         <service
             android:name="com.lintex9527.custom.MyPlayerService"
-            android:label="@string/service_play_music_attr"></service>
+            android:label="@string/service_play_music_attr" />
+        <service android:name="com.lintex9527.custom.AIDLService" />
 
         <!-- 所有的测试项列在这个页面 -->
         <activity
@@ -431,13 +432,21 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".TestBinderServiceActivity"
-            android:label="@string/bindservice_attr"
+            android:label="@string/bindservice_attr">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestBinderServiceActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TestAIDLServiceActivity"
+            android:label="@string/aidl_server_attr"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestBinderServiceActivity"/>
+                <action android:name="com.lintex9527.TestAIDLServiceActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 

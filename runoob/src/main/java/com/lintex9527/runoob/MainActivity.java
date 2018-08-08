@@ -66,6 +66,7 @@ public class MainActivity extends Activity {
 
         index = 0;
 
+        addTestItem(R.string.aidl_server_attr, "com.lintex9527.TestAIDLServiceActivity");
         addTestItem(R.string.bindservice_attr, "com.lintex9527.runoob.TestBinderServiceActivity");
         addTestItem(R.string.service_play_music_attr, "com.lintex9527.runoob.TestServicePlayerActivity");
         addTestItem(R.string.servicebasic_attr, "com.lintex9527.runoob.TestServiceActivity");
