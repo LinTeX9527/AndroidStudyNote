@@ -20,6 +20,8 @@
 
         <service android:name="com.lintex9527.custom.HelloIntentService"/>
 
+        <service android:name="com.lintex9527.custom.HelloService"/>
+
         <!--每一个Service必须在这里注册，否则不可用-->
         <service
             android:name="com.lintex9527.custom.MyPlayerService"

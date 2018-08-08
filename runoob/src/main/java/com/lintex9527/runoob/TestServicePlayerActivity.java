@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.lintex9527.custom.HelloIntentService;
+import com.lintex9527.custom.HelloService;
 import com.lintex9527.custom.MyPlayerService;
 
 import static com.lintex9527.custom.MyPlayerService.KEY_CONTROL;
@@ -64,10 +65,22 @@ public class TestServicePlayerActivity extends AppCompatActivity {
      */
     public void sendClickCount(View view) {
         long threadid = Thread.currentThread().getId();
-        Log.d(TAG, "[" + threadid + "] 按钮线程发送数值:" + (clickCount + 1));
+        clickCount++;
+        Log.d(TAG, "[" + threadid + "] 按钮线程发送数值:" + clickCount);
 
         Intent intent = new Intent(this, HelloIntentService.class);
-        intent.putExtra(HelloIntentService.KEY_CLICK_COUNT, ++clickCount);
+        intent.putExtra(HelloIntentService.KEY_CLICK_COUNT, clickCount);
+        startService(intent);
+    }
+
+
+    public void click2(View view) {
+        long threadid = Thread.currentThread().getId();
+        clickCount++;
+        Log.d(TAG, "click2: clickCount = " + clickCount);
+
+        Intent intent = new Intent(this, HelloService.class);
+        intent.putExtra(HelloService.KEY_CLICK_COUNT, clickCount);
         startService(intent);
     }
 }

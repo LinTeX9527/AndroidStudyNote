@@ -69,8 +69,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="发送按钮点击次数给IntentService"
+            android:text="@string/multiple_call_intentservice"
+            android:textAllCaps="false"
             android:onClick="sendClickCount"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/one_thread_one_intent"
+            android:textAllCaps="false"
+            android:onClick="click2"
             />
     </LinearLayout>
 
