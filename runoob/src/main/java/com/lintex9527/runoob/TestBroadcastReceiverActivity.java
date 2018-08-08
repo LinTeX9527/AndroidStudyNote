@@ -1,9 +1,11 @@
 package com.lintex9527.runoob;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.lintex9527.custom.WifiStateBroadcastReceiver;
 
@@ -37,6 +39,15 @@ public class TestBroadcastReceiverActivity extends AppCompatActivity {
         registerReceiver(mWifiStateBroadcastReceiver, intentFilter);
     }
 
+
+    /**
+     * 按钮点击之后发送火警报警的全局广播
+     * @param view
+     */
+    public void sendFirealarm(View view) {
+        // 下面发送的广播是全局的，系统上所有的应用都能够收到广播。
+        sendBroadcast(new Intent("com.lintex9527.custom.BROADCAST_FIREALARM"));
+    }
 
     @Override
     protected void onDestroy() {

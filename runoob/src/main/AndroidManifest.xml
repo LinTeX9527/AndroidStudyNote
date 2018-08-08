@@ -28,6 +28,13 @@
             android:label="@string/service_play_music_attr" />
         <service android:name="com.lintex9527.custom.AIDLService" />
 
+        <!--静态注册一个广播接收器-->
+        <receiver android:name="com.lintex9527.custom.FireAlarmBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.lintex9527.custom.BROADCAST_FIREALARM"/>
+            </intent-filter>
+        </receiver>
+
         <!-- 所有的测试项列在这个页面 -->
         <activity
             android:name=".MainActivity"
