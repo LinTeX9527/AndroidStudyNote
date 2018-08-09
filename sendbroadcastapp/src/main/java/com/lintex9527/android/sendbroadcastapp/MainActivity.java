@@ -1,6 +1,9 @@
 package com.lintex9527.android.sendbroadcastapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,10 +21,25 @@ public class MainActivity extends AppCompatActivity {
 
     private static int clickCount = 0;
 
+    private Context mContext = null;
+    private LocalReceiver mLocalReceiver = null;
+    // 本地广播管理器
+    LocalBroadcastManager mLocalBroadcastManager = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mContext = MainActivity.this;
+        mLocalBroadcastManager = LocalBroadcastManager.getInstance(mContext);
+
+        // 注册本地广播接收器
+        mLocalReceiver = new LocalReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(LocalReceiver.RECEIVER_ACTION);
+        // 注意这里使用的是本地广播管理器的注册方法
+        mLocalBroadcastManager.registerReceiver(mLocalReceiver, intentFilter);
     }
 
     public void sendBroadcast(View view) {
@@ -38,6 +56,23 @@ public class MainActivity extends AppCompatActivity {
                 intent2.putExtra(KEY_STATIC_MSG, "变化次数" + (++clickCount));
                 sendBroadcast(intent2);
                 break;
+
+
+            case R.id.btn_local:
+                // 发送本地广播
+                Intent intent3 = new Intent();
+                intent3.setAction(LocalReceiver.RECEIVER_ACTION);
+                intent3.putExtra(LocalReceiver.KEY_LOCAL_MSG, "变化次数" + (++clickCount));
+                mLocalBroadcastManager.sendBroadcast(intent3);
+                break;
         }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        // 注销广播接收器
+        mLocalBroadcastManager.unregisterReceiver(mLocalReceiver);
+        super.onDestroy();
     }
 }
