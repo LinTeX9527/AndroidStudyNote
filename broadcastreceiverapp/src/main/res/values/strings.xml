@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">广播接收App</string>
+    <string name="app_notes">本App只接收广播</string>
+    <string name="exam_dynamic">演示动态注册广播接收器</string>
+    <string name="exam_static">演示静态注册广播接收器</string>
+    <string name="back_home">返回主界面</string>
+</resources>
