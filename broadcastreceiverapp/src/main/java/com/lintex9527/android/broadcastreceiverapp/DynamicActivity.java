@@ -24,7 +24,7 @@ public class DynamicActivity extends AppCompatActivity {
         // 注册广播接收器
         mDynamicReceiver = new DynamicReceiver();
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("com.lintex9527.android.DYNAMIC_BROADCAST");
+        intentFilter.addAction(DynamicReceiver.RECEIVER_ACTION);
         registerReceiver(mDynamicReceiver, intentFilter);
     }
 

@@ -1,1 +1,1 @@
-include ':MyStudy', ':geoquiz', ':runoob-framelayout', ':runoob', ':broadcastreceiverapp'
+include ':MyStudy', ':geoquiz', ':runoob-framelayout', ':runoob', ':broadcastreceiverapp', ':sendbroadcastapp'

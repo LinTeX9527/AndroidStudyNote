@@ -7,12 +7,13 @@ import android.widget.Toast;
 
 /**
  * 这个广播接收器用动态注册的方式来监听广播
- * com.lintex9527.android.DYNAMIC_BROADCAST
+ * com.lintex9527.android.action.DYNAMIC_BROADCAST
  *
  * 并且广播附带一个字符串，用Toast展示出来
  */
 public class DynamicReceiver extends BroadcastReceiver {
 
+    public static final String RECEIVER_ACTION = "com.lintex9527.android.action.DYNAMIC_BROADCAST";
     public static final String KEY_DYNAMIC_MSG = "key_dynamic_msg";
 
     @Override
