@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
     private static final String[] REQUIRED_PERMISSION_LIST = new String[] {
             Manifest.permission.READ_SMS,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_CONTACTS,
     };
     // 保存系统默认没有许可的权限
     private List<String> missingPermissions = new ArrayList<>();

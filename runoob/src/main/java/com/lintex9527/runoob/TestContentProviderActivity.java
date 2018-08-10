@@ -4,6 +4,7 @@ import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,7 +58,33 @@ public class TestContentProviderActivity extends AppCompatActivity {
                     }
                 }).start();
                 break;
-
+            case R.id.btn_read_contacts:
+                // 读取联系人列表
+                ContentResolver resolver = getContentResolver();
+                Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+                // 查询联系人数据
+                final Cursor cursor = resolver.query(uri, null, null, null, null);
+                if (cursor != null) {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            int count = 0;
+                            while (cursor.moveToNext()) {
+                                count++;
+                                if (count>=15) {
+                                    break;
+                                }
+                                String name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+                                String phonenumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                                Log.d(TAG, "姓名：" + name);
+                                Log.d(TAG, "号码：" + phonenumber);
+                                Log.d(TAG, "=========================================");
+                            }
+                            cursor.close();
+                        }
+                    }).start();
+                }
+                break;
         }
     }
 }

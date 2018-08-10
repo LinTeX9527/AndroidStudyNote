@@ -11,8 +11,20 @@
         android:id="@+id/btn_read_sms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_marginTop="10dp"
         android:text="@string/read_sms"
+        android:textSize="18sp"
+        android:onClick="readOtherAppInfo"
+        />
+
+    <Button
+        android:id="@+id/btn_read_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="@string/read_contacts"
         android:textSize="18sp"
         android:onClick="readOtherAppInfo"
         />
