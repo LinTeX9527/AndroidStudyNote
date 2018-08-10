@@ -4,4 +4,5 @@
     <string name="msg_dynamic">发送消息1--动态</string>
     <string name="msg_static">发送消息2--静态</string>
     <string name="send_local">发送本地广播</string>
+    <string name="send_restrict_broadcast">发送一个受限制的广播</string>
 </resources>
