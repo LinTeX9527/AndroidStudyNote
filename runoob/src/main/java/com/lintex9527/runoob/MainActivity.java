@@ -1,15 +1,21 @@
 package com.lintex9527.runoob;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,9 +28,12 @@ import java.util.List;
  * ActivityCollector
  * BaseActivity
  *
+ * 2018/8/10 16:56 添加了动态权限申请
  */
 
 public class MainActivity extends Activity {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     public final static String ITEM_DESCRIPTION = "DESCRIPTION";
     public final static String ITEM_ACTION = "ACTION";
@@ -32,9 +41,23 @@ public class MainActivity extends Activity {
     private List<HashMap<String, Object>> data = null;
     private static int index = 0;
 
+    // 动态申请的权限列表
+    private static final String[] REQUIRED_PERMISSION_LIST = new String[] {
+            Manifest.permission.READ_SMS,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+    };
+    // 保存系统默认没有许可的权限
+    private List<String> missingPermissions = new ArrayList<>();
+    // 动态申请权限的申请码
+    private static final int REQUEST_PERMISSION_CODE = 12345;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 立刻开始申请权限
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            checkAndRequestPermissions();
+        }
         setContentView(R.layout.activity_main);
 
 
@@ -60,12 +83,67 @@ public class MainActivity extends Activity {
         });
     }
 
+
+    /**
+     * 主动检查权限是否许可，未许可的话就直接动态申请
+     */
+    private void checkAndRequestPermissions() {
+        // 先动态检查一遍权限
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            for (String eachPermission : REQUIRED_PERMISSION_LIST) {
+                if (checkSelfPermission(eachPermission) == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "权限 " + eachPermission + "已满足");
+                } else {
+                    Log.d(TAG, "权限 " + eachPermission + "需要动态申请");
+                    missingPermissions.add(eachPermission);
+                }
+            }
+        }
+        // 在来动态申请权限
+        if (missingPermissions.isEmpty()) {
+            Log.d(TAG, "所有需要的权限以满足，无需动态申请");
+        } else {
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    missingPermissions.toArray(new String[missingPermissions.size()]),
+                    REQUEST_PERMISSION_CODE);
+        }
+    }
+
+
+    /**
+     * 检查动态申请权限的结果
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_PERMISSION_CODE) {
+            for (int i = permissions.length-1; i >= 0; i--) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "动态申请此权限" + permissions[i] + "已许可");
+                    missingPermissions.remove(permissions[i]);
+                }
+            }
+
+            if (missingPermissions.isEmpty()) {
+                Log.d(TAG, "所有的权限已许可");
+            } else {
+                // 列出所有未许可的权限
+                Log.d(TAG, "如下权限未满足：\n" + missingPermissions.toString());
+                Toast.makeText(getBaseContext(), "如下权限未满足：\n" + missingPermissions.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
     protected void initData(){
 
         data = new ArrayList<>();
 
         index = 0;
 
+        addTestItem(R.string.contentprovider_attr, "com.lintex9527.runoob.TestContentProviderActivity");
         addTestItem(R.string.broadcast_attr, "com.lintex9527.runoob.TestBroadcastReceiverActivity");
         addTestItem(R.string.aidl_server_attr, "com.lintex9527.TestAIDLServiceActivity");
         addTestItem(R.string.bindservice_attr, "com.lintex9527.runoob.TestBinderServiceActivity");

@@ -3,6 +3,7 @@
     package="com.lintex9527.runoob">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_SMS"/>
 
     <application
         android:allowBackup="true"
@@ -28,10 +29,10 @@
             android:label="@string/service_play_music_attr" />
         <service android:name="com.lintex9527.custom.AIDLService" />
 
-        <!--静态注册一个广播接收器-->
+        <!-- 静态注册一个广播接收器 -->
         <receiver android:name="com.lintex9527.custom.FireAlarmBroadcastReceiver">
             <intent-filter>
-                <action android:name="com.lintex9527.custom.BROADCAST_FIREALARM"/>
+                <action android:name="com.lintex9527.custom.BROADCAST_FIREALARM" />
             </intent-filter>
         </receiver>
 
@@ -459,10 +460,19 @@
         </activity>
         <activity
             android:name=".TestBroadcastReceiverActivity"
-            android:label="@string/broadcast_attr"
+            android:label="@string/broadcast_attr">
+            <intent-filter>
+                <action android:name="com.lintex9527.runoob.TestBroadcastReceiverActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TestContentProviderActivity"
+            android:label="@string/contentprovider_attr"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.runoob.TestBroadcastReceiverActivity"/>
+                <action android:name="com.lintex9527.runoob.TestContentProviderActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 

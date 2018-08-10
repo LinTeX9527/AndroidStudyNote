@@ -84,4 +84,6 @@
     <string name="broadcast_case">广播接收器案例</string>
     <string name="broadcast_attr">广播接收器</string>
     <string name="broadcast_firealarm">发送火警报警</string>
+    <string name="read_sms">读取短信</string>
+    <string name="contentprovider_attr">ContentProvider基础</string>
 </resources>
