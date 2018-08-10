@@ -11,19 +11,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--广播接收器，静态注册-->
+        <!-- 广播接收器，静态注册 -->
+        <receiver android:name=".StaticReceiver">
+            <intent-filter>
+                <action android:name="com.lintex9527.android.action.STATIC_BROADCAST" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 一个演示广播接收器限制发送者的权限的例子 -->
         <receiver
-            android:name=".StaticReceiver"
+            android:name=".WifiStateReceiver"
+            android:permission="android.permission.CHANGE_WIFI_STATE"
             >
             <intent-filter>
-                <action android:name="com.lintex9527.android.action.STATIC_BROADCAST"/>
+                <action android:name="com.lintex9527.android.action.MY_WIFI_STATE_CHANGED" />
             </intent-filter>
         </receiver>
 
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTop"
-            >
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +38,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".DynamicActivity" />
-        <activity android:name=".StaticActivity"></activity>
+        <activity android:name=".StaticActivity" />
+        <activity android:name=".RestrictSenderActivity"></activity>
     </application>
 
 </manifest>

@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Context mContext = null;
     private Button btnDynamic = null;
     private Button btnStatic = null;
+    private Button btnRestrict = null;
 
 
     @Override
@@ -25,9 +26,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnDynamic = (Button) findViewById(R.id.btn_dynamic);
         btnStatic = (Button) findViewById(R.id.btn_static);
+        btnRestrict = (Button) findViewById(R.id.btn_restrict_sender);
 
         btnDynamic.setOnClickListener(this);
         btnStatic.setOnClickListener(this);
+        btnRestrict.setOnClickListener(this);
     }
 
     @Override
@@ -38,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_static:
                 startActivity(new Intent(mContext, StaticActivity.class));
+                break;
+            case R.id.btn_restrict_sender:
+                startActivity(new Intent(mContext, RestrictSenderActivity.class));
                 break;
         }
     }
