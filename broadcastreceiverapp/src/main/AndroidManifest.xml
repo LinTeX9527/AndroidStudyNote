@@ -21,12 +21,12 @@
         <!-- 一个演示广播接收器限制发送者的权限的例子 -->
         <receiver
             android:name=".WifiStateReceiver"
-            android:permission="android.permission.CHANGE_WIFI_STATE"
             >
             <intent-filter>
                 <action android:name="com.lintex9527.android.action.MY_WIFI_STATE_CHANGED" />
             </intent-filter>
         </receiver>
+
 
         <activity
             android:name=".MainActivity"

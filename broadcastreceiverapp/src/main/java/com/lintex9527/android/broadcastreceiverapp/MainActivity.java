@@ -2,6 +2,7 @@ package com.lintex9527.android.broadcastreceiverapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnRestrict = null;
 
 
+    private WeatherBcReceiver mWeatherBcReceiver = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDynamic.setOnClickListener(this);
         btnStatic.setOnClickListener(this);
         btnRestrict.setOnClickListener(this);
+
+
+        mWeatherBcReceiver = new WeatherBcReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.lintex9527.android.action.WEATHER_CHANGED");
+        // 没有限制发送广播的APP具有的权限
+        registerReceiver(mWeatherBcReceiver, intentFilter);
+        // 限制发送者必须具备的权限
+//        registerReceiver(mWeatherBcReceiver, intentFilter, "com.lintex9527.android.permission.WEATHER_STATE", null);
     }
 
     @Override
@@ -46,5 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(mContext, RestrictSenderActivity.class));
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(mWeatherBcReceiver);
+        super.onDestroy();
     }
 }

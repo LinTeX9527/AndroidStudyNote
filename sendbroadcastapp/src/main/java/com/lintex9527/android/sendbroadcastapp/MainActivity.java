@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String KEY_DYNAMIC_MSG = "key_dynamic_msg";
     public static final String KEY_STATIC_MSG = "key_static_msg";
     public static final String KEY_WIFISTATE_MSG = "key_wifistate_msg";
+    public static final String KEY_WEATHER_MSG = "key_weather_msg";
 
     private static int clickCount = 0;
 
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void sendBroadcast(View view) {
+    public void onClickSendBroadcast(View view) {
         switch (view.getId()) {
             case R.id.btn_dynamic:
                 Intent intent = new Intent();
@@ -134,6 +135,15 @@ public class MainActivity extends AppCompatActivity {
                 intent4.setAction("com.lintex9527.android.action.MY_WIFI_STATE_CHANGED");
                 intent4.putExtra(KEY_WIFISTATE_MSG, "来自有权发送消息的广播" + (++clickCount));
                 sendBroadcast(intent4);
+                break;
+
+            case R.id.btn_weather:
+                // 发送天气状态
+                Log.d(TAG, "发送天气状态");
+                Intent intent5 = new Intent();
+                intent5.setAction("com.lintex9527.android.action.WEATHER_CHANGED");
+                intent5.putExtra(KEY_WEATHER_MSG, "下雨天");
+                sendBroadcast(intent5);
                 break;
         }
     }

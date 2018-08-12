@@ -24,7 +24,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/msg_dynamic"
         android:textSize="18sp"
-        android:onClick="sendBroadcast"
+        android:onClick="onClickSendBroadcast"
         />
 
 
@@ -35,7 +35,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/msg_static"
         android:textSize="18sp"
-        android:onClick="sendBroadcast"
+        android:onClick="onClickSendBroadcast"
         />
 
     <Button
@@ -45,7 +45,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/send_local"
         android:textSize="18sp"
-        android:onClick="sendBroadcast"
+        android:onClick="onClickSendBroadcast"
         />
 
     <Button
@@ -55,7 +55,17 @@
         android:layout_marginTop="20dp"
         android:text="@string/send_restrict_broadcast"
         android:textSize="18sp"
-        android:onClick="sendBroadcast"
+        android:onClick="onClickSendBroadcast"
+        />
+
+    <Button
+        android:id="@+id/btn_weather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="发送天气状态"
+        android:textSize="18sp"
+        android:onClick="onClickSendBroadcast"
         />
 
 </LinearLayout>
