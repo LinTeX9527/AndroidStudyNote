@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lintex9527.android.sendbroadcastapp">
 
+    <!--自定义了一个权限-->
+    <permission
+        android:name="com.lintex9527.android.permission.WEATHER_STATE"
+        android:label="@string/perlab_weatherchange"
+        android:description="@string/perdesc_weatherchange"
+        android:protectionLevel="normal"
+        />
+
+
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <uses-permission android:name="com.lintex9527.android.permission.WEATHER_STATE"/>

@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("com.lintex9527.android.action.WEATHER_CHANGED");
         // 没有限制发送广播的APP具有的权限
-        registerReceiver(mWeatherBcReceiver, intentFilter);
+//        registerReceiver(mWeatherBcReceiver, intentFilter);
         // 限制发送者必须具备的权限
-//        registerReceiver(mWeatherBcReceiver, intentFilter, "com.lintex9527.android.permission.WEATHER_STATE", null);
+        registerReceiver(mWeatherBcReceiver, intentFilter, "com.lintex9527.android.permission.WEATHER_STATE", null);
     }
 
     @Override

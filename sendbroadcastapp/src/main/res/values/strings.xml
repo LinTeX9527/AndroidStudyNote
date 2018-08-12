@@ -5,4 +5,7 @@
     <string name="msg_static">发送消息2--静态</string>
     <string name="send_local">发送本地广播</string>
     <string name="send_restrict_broadcast">发送一个受限制的广播</string>
+
+    <string name="perlab_weatherchange">天气发生了变化</string>
+    <string name="perdesc_weatherchange">通知天气发生了变化</string>
 </resources>
