@@ -3,6 +3,10 @@
     package="com.lintex9527.android.broadcastreceiverapp">
 
 
+    <!--如果没有满足下面的这个权限，那么 WifiStateReceiver 是不会收到广播的-->
+    <!--<uses-permission android:name="com.lintex9527.android.permission.MY_WIFI_STATE"/>-->
+
+    
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

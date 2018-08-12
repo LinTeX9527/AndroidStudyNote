@@ -134,7 +134,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent4 = new Intent();
                 intent4.setAction("com.lintex9527.android.action.MY_WIFI_STATE_CHANGED");
                 intent4.putExtra(KEY_WIFISTATE_MSG, "来自有权发送消息的广播" + (++clickCount));
-                sendBroadcast(intent4);
+                // 在这里第二个参数限制广播接收者必须具备的权限
+                sendBroadcast(intent4, "com.lintex9527.android.permission.MY_WIFI_STATE");
                 break;
 
             case R.id.btn_weather:

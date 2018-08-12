@@ -8,4 +8,9 @@
 
     <string name="perlab_weatherchange">天气发生了变化</string>
     <string name="perdesc_weatherchange">通知天气发生了变化</string>
+
+
+    <string name="perlab_wifistate">自定义的通知WIFI状态权限</string>
+    <string name="perdesc_wifistate">通知我的WIFI状态</string>
+
 </resources>

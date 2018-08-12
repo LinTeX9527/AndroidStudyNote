@@ -11,6 +11,13 @@
         />
 
 
+    <!--自定义一个权限，要求广播接收器必须具备这个权限-->
+    <permission android:name="com.lintex9527.android.permission.MY_WIFI_STATE"
+        android:label="@string/perlab_wifistate"
+        android:description="@string/perdesc_wifistate"
+        android:protectionLevel="normal"
+        />
+
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <uses-permission android:name="com.lintex9527.android.permission.WEATHER_STATE"/>
