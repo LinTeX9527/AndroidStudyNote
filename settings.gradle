@@ -1,1 +1,1 @@
-include ':MyStudy', ':geoquiz', ':runoob-framelayout', ':runoob', ':broadcastreceiverapp', ':sendbroadcastapp'
+include ':MyStudy', ':geoquiz', ':runoob-framelayout', ':runoob', ':broadcastreceiverapp', ':sendbroadcastapp', ':sqlitedemo01'
