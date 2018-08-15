@@ -50,9 +50,14 @@ public class AddCountryActivity extends Activity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.add_record:
-                final String name = subjectEditText.getText().toString();
-                final String desc = descEditText.getText().toString();
-                mDBManager.insert(name, desc);
+                final String name = subjectEditText.getText().toString().trim();
+                final String desc = descEditText.getText().toString().trim();
+                // 只有当输入的信息不为空时才能插入到数据库中
+                if (!name.isEmpty() && !desc.isEmpty()) {
+                    mDBManager.insert(name, desc);
+                } else {
+                    Log.d(TAG, "信息不完整，不能插入!!!");
+                }
 
                 Intent main = new Intent(AddCountryActivity.this, CountryListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(main);
