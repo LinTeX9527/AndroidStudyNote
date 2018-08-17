@@ -3,7 +3,6 @@ package com.lintex9527.android.gamecenter;
 import android.app.Application;
 import android.content.res.Configuration;
 
-
 import com.elvishew.xlog.LogConfiguration;
 import com.elvishew.xlog.LogLevel;
 import com.elvishew.xlog.XLog;

@@ -1,14 +1,14 @@
 package com.lintex9527.android.gamecenter;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,13 +29,22 @@ import com.lintex9527.android.database.DBManager;
  */
 public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
+    // XLog的调试器
+    Logger logger = null;
+
+    // SharedPreferences 文件的名称
+    private static final String SETTINGS_FILENAME = "settings";
+    // ("check_state", boolean isChecked)记住用户名按钮的状态，根据状态来选择是否加载上一次的用户名
+    private static final String KEY_CHECK_STATE = "check_state";
+
     private Context mContext = null;
     private DBManager mDBManager = null;
-
+    private SharedPreferences mSharedPreferences = null;
+    private SharedPreferences.Editor mEditor = null;
     // 控件
     private EditText editUsername = null;
     private EditText editPassword = null;
-    private RadioButton rdbtnRemUsername = null;
+    private CheckBox chkRemUsername = null;
     private TextView tvForgetPassword = null;
     private Button btnLogin = null;
     private Button btnRegister = null;
@@ -44,29 +53,35 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        XLog.d("onCreate() 主界面初始化");
+        logger = XLog.tag("main-UI").build();
+        logger.d("onCreate() 主界面初始化");
         mContext = MainActivity.this;
         mDBManager = new DBManager(mContext);
         mDBManager.open();
-        bindViews();
+        initGUI();
     }
 
 
     /**
-     * 绑定控件
+     * 初始化界面，绑定控件
      */
-    private void bindViews(){
+    private void initGUI(){
         editUsername = findViewById(R.id.edit_username);
         editPassword = findViewById(R.id.edit_password);
-        rdbtnRemUsername = findViewById(R.id.rdbtn_remember_username);
+        chkRemUsername = findViewById(R.id.chk_remember_username);
         tvForgetPassword = findViewById(R.id.tv_forget_pwd);
         btnLogin = findViewById(R.id.btn_login);
         btnRegister = findViewById(R.id.btn_register);
 
-        rdbtnRemUsername.setOnCheckedChangeListener(this);
+        chkRemUsername.setOnCheckedChangeListener(this);
         tvForgetPassword.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
+
+        // 根据按钮状态来决定是否加载上一次的用户名
+        mSharedPreferences = mContext.getSharedPreferences(SETTINGS_FILENAME, MODE_PRIVATE);
+        boolean isChecked = mSharedPreferences.getBoolean(KEY_CHECK_STATE, false);
+        chkRemUsername.setChecked(isChecked);
     }
 
 
@@ -92,7 +107,28 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
      */
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch (buttonView.getId()) {
+            case R.id.chk_remember_username: // 记住用户名，把用户名保存到SharedPreferences中
+                saveCheckRemUsername(isChecked);
+                if (isChecked){ // 记住用户名
+                    logger.d("记住用户名");
+                } else { // 取消选择，不记住用户名
+                    logger.d("忘记用户名");
+                }
+                break;
+        }
+    }
 
+
+    /**
+     * 根据选项框的状态来更新SharedPreferences中的值
+     * @param isChecked 选项框是否选中
+     */
+    private void saveCheckRemUsername(boolean isChecked){
+        mSharedPreferences = mContext.getSharedPreferences(SETTINGS_FILENAME, MODE_PRIVATE);
+        mEditor = mSharedPreferences.edit();
+        mEditor.putBoolean(KEY_CHECK_STATE, isChecked);
+        mEditor.apply();
     }
 
 
