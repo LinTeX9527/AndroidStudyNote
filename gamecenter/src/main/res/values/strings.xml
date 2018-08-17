@@ -10,4 +10,7 @@
     <string name="announce_to_friends">交友宣言</string>
     <string name="default_announcements">这个山头是属于我的，包括你在内！</string>
     <string name="to_be_continued">功能暂未实现，敬请等待</string>
+    <!--应用模块的名字-->
+    <string name="module_forget_password">忘记密码</string>
+    <string name="module_app">应用程序</string>
 </resources>
