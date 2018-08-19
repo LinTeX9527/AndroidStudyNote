@@ -1,6 +1,7 @@
 package com.lintex9527.android.gamecenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,11 +24,12 @@ import com.lintex9527.android.database.DBManager;
  * 1、注册时要求用户名长度>=3，密码长度>=8；(OK)
  * 2、注册时检查是否已经存在同名用户，如果存在则提示已存在，注册失败，否则提示注册成功；(OK)
  * 3、注册成功的用户名和密码都保存到本应用相关的SQLite数据库中；(OK)
- * 4、注册成功跳到“欢迎新用户界面”；
+ * 4、注册成功跳到“欢迎新用户界面”；(OK)
  * 5、记住密码功能说明：只针对用户名生效。开启时，如果登录成功，则下一次回到这个界面直接加载这个用户名，
- *    没有开启时，进入这个界面用户输入框是空的。
+ *    没有开启时，进入这个界面用户输入框是空的。(OK)
  * 6、忘记密码：To be continued.
- * 7、登录功能：验证用户名和对应的密码是否存在，二者都匹配则跳转到“欢迎老用户界面”；失败则提示密码和用户名不匹配（需要检查是否为空）；
+ * 7、登录功能：验证用户名和对应的密码是否存在，二者都匹配则跳转到“欢迎老用户界面”；
+ *    失败则提示密码和用户名不匹配（需要检查是否为空）；(OK)
  */
 public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
@@ -45,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     // 约束用户名和密码的长度
     private static final int USERNAME_MIN_LENGTH = 3;
     private static final int PASSWORD_MIN_LENGTH = 8;
+
+    // 跳转页面时传递的用户名字，对应的KEY
+    public static final String KEY_USERNAME = "username";
 
     private Context mContext = null;
     private DBManager mDBManager = null;
@@ -190,7 +195,9 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                     if (mDBManager.match(username, password)) { // 检验是否是一个已经注册成功的用户
                         showMessage("身份认证通过");
                         // TODO: 登录成功，跳转到应用界面
-                        to_be_continued(getString(R.string.module_app));
+                        Intent intent = new Intent(this, LoginSuccessActivity.class);
+                        intent.putExtra(KEY_USERNAME, username);
+                        startActivity(intent);
                     } else {
                         showMessage("身份认证失败");
                     }
@@ -205,6 +212,9 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                     } else {
                         mDBManager.insert(username, password);
                         showMessage("注册成功");
+                        Intent intent = new Intent(this, RegisterSuccessActivity.class);
+                        intent.putExtra(KEY_USERNAME, username);
+                        startActivity(intent);
                     }
                 }
                 break;
